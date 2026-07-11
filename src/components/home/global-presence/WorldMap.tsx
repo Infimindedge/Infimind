@@ -1,10 +1,7 @@
-import { useMemo, memo } from 'react';
+import { memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import type { LocationItem } from '@/types/content';
 import { WORLD_LAND_PATH, MAP_VIEW_WIDTH, MAP_VIEW_HEIGHT, projectLonLat, percentToLonLat } from './worldGeo';
-
-/** Decorative network hub the connector line arcs from — not a real office location. */
-const HUB_LONLAT = percentToLonLat(46, 40);
 
 /** Static continent silhouette — memoized so it never re-renders on the 4.5s location-cycle tick. */
 const MapLand = memo(function MapLand() {
@@ -25,18 +22,6 @@ interface WorldMapProps {
 
 export function WorldMap({ locations, activeIndex }: WorldMapProps) {
   const reduceMotion = useReducedMotion();
-  const active = locations[activeIndex];
-
-  const hub = useMemo(() => projectLonLat(HUB_LONLAT[0], HUB_LONLAT[1]), []);
-
-  const connectorPath = useMemo(() => {
-    if (!active) return '';
-    const [lon, lat] = percentToLonLat(active.mapPosition.x, active.mapPosition.y);
-    const end = projectLonLat(lon, lat);
-    const midX = (hub.x + end.x) / 2;
-    const controlY = Math.min(hub.y, end.y) - 60;
-    return `M ${hub.x} ${hub.y} Q ${midX} ${controlY} ${end.x} ${end.y}`;
-  }, [active, hub]);
 
   return (
     <svg
@@ -47,21 +32,7 @@ export function WorldMap({ locations, activeIndex }: WorldMapProps) {
     >
       <MapLand />
 
-      {active && connectorPath ? (
-        <motion.path
-          key={active.id}
-          d={connectorPath}
-          fill="none"
-          stroke="var(--accent-blue)"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeDasharray="4 5"
-          initial={{ pathLength: reduceMotion ? 1 : 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.6 }}
-          transition={{ duration: reduceMotion ? 0.001 : 0.9, ease: 'easeInOut' }}
-        />
-      ) : null}
-
+      {/* Every active location gets a blue dot — new ones added from /admin appear here immediately. */}
       {locations.map((location, index) => {
         const [lon, lat] = percentToLonLat(location.mapPosition.x, location.mapPosition.y);
         const { x: cx, y: cy } = projectLonLat(lon, lat);
@@ -69,36 +40,23 @@ export function WorldMap({ locations, activeIndex }: WorldMapProps) {
         return (
           <g key={location.id}>
             {isActive ? (
-              <>
-                <motion.circle
-                  cx={cx}
-                  cy={cy}
-                  r={6}
-                  fill="none"
-                  stroke="var(--accent-blue)"
-                  strokeWidth={1.5}
-                  initial={{ r: 6, opacity: 0.6 }}
-                  animate={reduceMotion ? { r: 12, opacity: 0.15 } : { r: [6, 20], opacity: [0.6, 0] }}
-                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
-                />
-                <motion.circle
-                  cx={cx}
-                  cy={cy}
-                  r={6}
-                  fill="none"
-                  stroke="var(--accent-blue)"
-                  strokeWidth={1.5}
-                  initial={{ r: 6, opacity: 0.6 }}
-                  animate={reduceMotion ? { r: 12, opacity: 0.15 } : { r: [6, 20], opacity: [0.6, 0] }}
-                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut', delay: 0.6 }}
-                />
-              </>
+              <motion.circle
+                cx={cx}
+                cy={cy}
+                r={6}
+                fill="none"
+                stroke="var(--accent-blue)"
+                strokeWidth={1.5}
+                initial={{ r: 6, opacity: 0.6 }}
+                animate={reduceMotion ? { r: 12, opacity: 0.15 } : { r: [6, 18], opacity: [0.6, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
+              />
             ) : null}
             <circle
               cx={cx}
               cy={cy}
-              r={isActive ? 6 : 4}
-              fill={isActive ? 'var(--accent-blue)' : 'var(--accent-gold-dark)'}
+              r={isActive ? 5.5 : 4.5}
+              fill="var(--accent-blue)"
               stroke="var(--bg-pure)"
               strokeWidth={1.5}
             />

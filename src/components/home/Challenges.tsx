@@ -20,16 +20,16 @@ export function Challenges() {
   return (
     <section className="section-spacing bg-paper-soft">
       <Container width="max">
-        <div className="max-w-xl">
-          <h2 className="text-[clamp(32px,3vw,44px)] leading-[1.08] text-ink">
-            Every Child Has a Different Challenge.
-            <br />
-            <span className="text-gold">We Build a Different Solution.</span>
-          </h2>
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
-          <ChallengeTabList challenges={challenges} activeId={activeChallenge?.id ?? ''} onSelect={setActiveId} />
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
+          <div>
+            <h2 className="max-w-[230px] text-[clamp(28px,2.6vw,34px)] leading-[1.15] text-ink">
+              Every Child Has a Different Challenge.{' '}
+              <span className="text-gold">We Build a Different Solution.</span>
+            </h2>
+            <div className="mt-8">
+              <ChallengeTabList challenges={challenges} activeId={activeChallenge?.id ?? ''} onSelect={setActiveId} />
+            </div>
+          </div>
           <AnimatePresence mode="wait">
             {activeChallenge ? <ChallengePanel key={activeChallenge.id} challenge={activeChallenge} /> : null}
           </AnimatePresence>

@@ -2,11 +2,9 @@
 
 Everything below is intentionally left empty, placeholder, or draft — per the build spec's instruction not to invent missing content, statistics, testimonials, or challenge descriptions. Nothing here blocks the app from running; each gap has a graceful, clearly-labelled fallback.
 
-## Photography — mostly resolved
+## Photography — resolved
 
-Eight of nine photo slots were supplied by the client and placed in `public/assets/photos/` on 2026-07-10 (resized/compressed for web — see `ASSET_CREDITS.md`). Confirm the client holds the rights to use/redistribute these images before public launch — they were not sourced from the licensed stock pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md`.
-
-One slot is still a placeholder: **`weak-fundamentals-outcome.jpg`** (4:3, shown under "Expected Outcome" in the Weak Fundamentals challenge panel — added so both the Challenge and Outcome columns have matching photography, per the client's request to mirror the locked reference layout).
+All nine photo slots are supplied by the client and placed in `public/assets/photos/` (2026-07-10 and 2026-07-11 — resized/compressed for web, see `ASSET_CREDITS.md`). Confirm the client holds the rights to use/redistribute these images before public launch — they were not sourced from the licensed stock pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md`.
 
 ## Interactive Challenges — 5 of 6 tabs, admin-editable
 

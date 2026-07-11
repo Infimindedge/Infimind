@@ -56,22 +56,22 @@ Clicking "Schedule a Private Consultation" (Hero or the closing CTA section) ope
 
 ## WhatsApp
 
-A floating WhatsApp button appears on every homepage scroll position (bottom-right), and a second "Chat on WhatsApp" link sits inside the closing navy CTA section. Both open `https://wa.me/919968240372` with a pre-filled greeting. Update the number in `src/components/ui/WhatsAppButton.tsx` (`WHATSAPP_NUMBER`) if it changes.
+A floating WhatsApp button appears on every homepage scroll position (bottom-right), opening `https://wa.me/919968240372` with a pre-filled greeting. Update the number in `src/components/ui/WhatsAppButton.tsx` (`WHATSAPP_NUMBER`) if it changes.
 
 ## Replacing placeholder images
 
-Real photography is in place for all eight originally-specified slots (see `ASSET_CREDITS.md` for provenance and the "Known trade-offs" note about confirming usage rights). One additional slot is still a placeholder:
+Real photography is in place for all nine specified slots (see `ASSET_CREDITS.md` for provenance and the "Known trade-offs" note about confirming usage rights):
 
 ```
 hero-student-study.jpg          (16:10, Hero) — ✅ in place
 school-program.jpg              (3:2, Programs) — ✅ in place
 sat-program.jpg                 (3:2, Programs) — ✅ in place
 weak-fundamentals.jpg           (4:3, Challenges panel — "The Challenge" column) — ✅ in place
-weak-fundamentals-outcome.jpg   (4:3, Challenges panel — "Expected Outcome" column) — ⏳ placeholder
-personal-mentor.jpg             (4:3, Student Success Team) — ✅ in place
+weak-fundamentals-outcome.jpg   (4:3, Challenges panel — "Expected Outcome" column) — ✅ in place
+personal-mentor.jpg             (4:3, Student Success Team card + orbit center photo) — ✅ in place
 academic-counsellor.jpg         (4:3, Student Success Team) — ✅ in place
 wellbeing-counsellor.jpg        (4:3, Student Success Team) — ✅ in place
-consultation-lounge.jpg         (16:9, Final CTA) — ✅ in place
+consultation-lounge.jpg         (16:9 source, displayed ~2.48:1, Final CTA) — ✅ in place
 ```
 
 To add/replace a photo: save it under `public/assets/photos/` using the exact filename above — no code changes needed, `src/components/ui/Photo.tsx` picks it up automatically and falls back to a neutral placeholder if missing. Log provenance in `ASSET_CREDITS.md`.
@@ -89,10 +89,11 @@ Fonts: **Cormorant Garamond** (display/headings) and **Inter** (body/UI), loaded
 ## Known trade-offs / things to revisit
 
 - The gold accent (`#C78B45`) on white backgrounds — used for the hero's "Extraordinary Thinkers." word and section eyebrows — does not meet WCAG AA contrast for small text. This is a locked design-token value from the spec, not a bug; keep gold text large/bold or paired with sufficient weight, and never as the only color carrying critical small UI text.
-- The "Global Presence" connector line arcs from a fixed decorative point on the map (not a real office location) to whichever city is active — this is a visual "network" motif, not a claim about a physical HQ.
+- The "Global Presence" map (`src/components/home/global-presence/`) renders real continent geography (`worldGeo.ts`, via `d3-geo`/`topojson-client`/`world-atlas`) with a uniform blue dot per active location — no connector line. Every location in `/admin` → Countries & Flags appears immediately, in real time.
 - Locations added via `/admin` default to the map's center position (`{x:50, y:50}`) since the admin form (per spec) doesn't include a lat/long picker. A dedicated map-position picker is a good Phase 2 addition.
 - **Flag emoji render as plain 2-letter codes ("GB", "AE", ...) on Windows**, in both the homepage marquee and the admin Locations table. This is a Windows/Chrome font limitation (no flag glyphs ship in the default emoji font) — real flag pictures render correctly on macOS, iOS, Android, and most Linux desktops with no code change needed. For a Windows-consistent look, use the "upload custom flag image" field in `/admin` → Countries & Flags → the location's form, which overrides the emoji with an uploaded PNG/SVG.
-- The 8 real photos (`ASSET_CREDITS.md`) were supplied by the client rather than the originally-suggested licensed stock sources — confirm usage rights before public launch.
+- The 9 real photos (`ASSET_CREDITS.md`) were supplied by the client rather than the originally-suggested licensed stock sources — confirm usage rights before public launch.
+- The Student Success Team section's central orbit photo (`personal-mentor.jpg`) is reused from the "Personal Academic Mentor" card — there is no separate "student + teacher" photo yet. Swap it for a dedicated one if the client supplies one later.
 - Published sample testimonials and two location story quotes are visible on the live homepage right now (client request, for design preview) — they are clearly labelled in `/admin` as `Sample preview — replace before launch` but read as ordinary testimonials to a public visitor. Replace or unpublish before launch.
 - The consultation form and WhatsApp button have no backend beyond `localStorage` — enquiries must be checked manually in `/admin` until a real notification integration exists.
 

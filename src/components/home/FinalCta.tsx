@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Photo } from '@/components/ui/Photo';
 import { useConsultationModal } from '@/context/ConsultationModalContext';
-import { WHATSAPP_URL } from '@/components/ui/WhatsAppButton';
 
 export function FinalCta() {
   const { openConsultation } = useConsultationModal();
@@ -10,7 +9,7 @@ export function FinalCta() {
   return (
     <section id="consultation" className="section-spacing pt-0">
       <Container width="max">
-        <div className="grid grid-cols-1 overflow-hidden rounded-container border border-border shadow-soft lg:grid-cols-2 lg:aspect-[2.3/1]">
+        <div className="grid grid-cols-1 overflow-hidden rounded-container border border-border shadow-soft lg:grid-cols-2 lg:aspect-[2.48/1]">
           <div className="aspect-[16/9] lg:aspect-auto lg:h-full">
             <Photo
               filename="consultation-lounge.jpg"
@@ -19,36 +18,22 @@ export function FinalCta() {
               className="h-full"
             />
           </div>
-          <div className="flex flex-col justify-between gap-8 bg-navy px-8 py-10 sm:px-12 sm:py-10 lg:h-full">
-            <div>
-              <h2 className="text-[clamp(26px,2.4vw,36px)] leading-[1.12] text-on-dark">
-                Every Great Future Begins With the Right Guidance.
-              </h2>
-              <p className="mt-4 max-w-md text-[15px] leading-relaxed text-on-dark/75">
-                Whether your child is striving for stronger school performance or preparing for the world&rsquo;s
-                leading universities, every journey begins with understanding their unique potential.
-              </p>
-              <button
-                type="button"
-                onClick={openConsultation}
-                className="mt-6 inline-flex w-fit min-h-[44px] items-center justify-center gap-2 rounded-btn bg-gold px-6 py-3.5 text-sm font-medium text-navy transition-colors hover:bg-gold-dark hover:text-on-dark"
-              >
-                Schedule a Private Consultation
-                <ArrowRight size={16} aria-hidden="true" />
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-3 border-t border-on-dark/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-on-dark/70">Prefer a quick chat? Message us directly.</p>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-fit min-h-[44px] items-center justify-center gap-2 rounded-btn border border-on-dark/25 px-5 py-3 text-sm font-medium text-on-dark transition-colors hover:border-on-dark/50 hover:bg-on-dark/5"
-              >
-                Chat on WhatsApp
-              </a>
-            </div>
+          <div className="flex flex-col justify-center bg-navy px-8 py-12 sm:px-12 sm:py-16 lg:h-full">
+            <h2 className="text-[clamp(28px,2.6vw,38px)] leading-[1.12] text-on-dark">
+              Every Great Future Begins With the Right Guidance.
+            </h2>
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-on-dark/75">
+              Whether your child is striving for stronger school performance or preparing for the world&rsquo;s
+              leading universities, every journey begins with understanding their unique potential.
+            </p>
+            <button
+              type="button"
+              onClick={openConsultation}
+              className="mt-7 inline-flex w-fit min-h-[44px] items-center justify-center gap-2 rounded-btn bg-gold px-6 py-3.5 text-sm font-medium text-navy transition-colors hover:bg-gold-dark hover:text-on-dark"
+            >
+              Schedule a Private Consultation
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
           </div>
         </div>
       </Container>

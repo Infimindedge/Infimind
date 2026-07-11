@@ -13,14 +13,14 @@ All eight photos were supplied directly by the client (`home page pictures (2).z
 | hero-student-study.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | school-program.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | sat-program.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
-| weak-fundamentals.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
+| weak-fundamentals.jpg | Supplied by client (`home page photos 11.zip`, "weak fundamental sad.png") | Client-owned/licensed — verify before public launch | 2026-07-11 |
+| weak-fundamentals-outcome.jpg | Supplied by client — originally the first `weak-fundamentals.jpg`, moved here 2026-07-11 so the panel shows a "struggle" photo under The Challenge and a "resolved" photo under Expected Outcome | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | personal-mentor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | academic-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | wellbeing-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
-| consultation-lounge.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
-| weak-fundamentals-outcome.jpg | — not yet supplied — | — | — |
+| consultation-lounge.jpg | Supplied by client (`home page photos 11.zip`, "lounge photo.png") — replaces the 2026-07-10 version | Client-owned/licensed — verify before public launch | 2026-07-11 |
 
-The original free-stock source pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md` are no longer needed for the eight supplied files but remain as a fallback reference if any photo needs replacing. `weak-fundamentals-outcome.jpg` is a new slot (see CONTENT_GAPS.md) with no source assigned yet.
+The original free-stock source pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md` are no longer needed for any of these files but remain as a fallback reference if a photo needs replacing again.
 
 ## Icons
 

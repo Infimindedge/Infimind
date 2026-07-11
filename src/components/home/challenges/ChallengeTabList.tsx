@@ -24,7 +24,13 @@ export function ChallengeTabList({ challenges, activeId, onSelect }: ChallengeTa
   }
 
   return (
-    <div ref={listRef} role="tablist" aria-orientation="vertical" aria-label="Student challenges" className="flex flex-col gap-2">
+    <div
+      ref={listRef}
+      role="tablist"
+      aria-orientation="vertical"
+      aria-label="Student challenges"
+      className="flex flex-col gap-2 lg:max-h-[440px] lg:overflow-y-auto lg:pr-1"
+    >
       {challenges.map((challenge, index) => {
         const isActive = challenge.id === activeId;
         return (

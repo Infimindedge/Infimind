@@ -37,7 +37,7 @@ export function Programs() {
               <Link
                 key={program.id}
                 to={LINKS[program.id]}
-                className="group overflow-hidden rounded-container border border-border bg-paper-pure shadow-soft transition-all duration-300 hover:border-gold-soft hover:shadow-hover"
+                className="group flex h-full flex-col overflow-hidden rounded-container border border-border bg-paper-pure shadow-soft transition-all duration-300 hover:border-gold-soft hover:shadow-hover"
               >
                 <div className="aspect-[3/2] overflow-hidden">
                   <Photo
@@ -47,7 +47,7 @@ export function Programs() {
                     className="transition-transform duration-500 ease-out group-hover:scale-[1.035]"
                   />
                 </div>
-                <div className="p-6 sm:p-7">
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
                   <div className="flex items-center gap-3">
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-paper-soft text-navy">
                       <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
@@ -56,7 +56,7 @@ export function Programs() {
                       {program.name}
                     </h3>
                   </div>
-                  <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{program.description}</p>
+                  <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-soft">{program.description}</p>
                   <span className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-gold-dark transition-transform duration-300 group-hover:translate-x-1">
                     Explore {program.name}
                     <ArrowRight size={15} aria-hidden="true" />
