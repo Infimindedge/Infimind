@@ -12,8 +12,17 @@ export function FinalCta() {
   return (
     <section id="consultation" className="section-spacing pt-0">
       <Container width="max">
-        <div className="grid grid-cols-1 items-stretch overflow-hidden rounded-container border border-border shadow-soft lg:grid-cols-2">
-          <div className="w-full" style={{ aspectRatio: LOUNGE_PHOTO_RATIO }}>
+        {/*
+          No overflow-hidden on this outer row — each child clips/rounds
+          itself instead. If the navy column's text ever needs more height
+          than the photo's locked aspect ratio provides, the row simply
+          grows to fit it; text can never be silently clipped again.
+        */}
+        <div className="grid grid-cols-1 items-stretch rounded-container border border-border shadow-soft lg:grid-cols-2">
+          <div
+            className="w-full overflow-hidden rounded-t-container lg:rounded-l-container lg:rounded-tr-none"
+            style={{ aspectRatio: LOUNGE_PHOTO_RATIO }}
+          >
             <Photo
               filename="consultation-lounge.jpg"
               alt="A calm, premium lounge setting for private consultations"
@@ -21,7 +30,7 @@ export function FinalCta() {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="flex flex-col justify-center bg-navy px-8 py-8 sm:px-10 sm:py-9 lg:px-9">
+          <div className="flex flex-col justify-center rounded-b-container bg-navy px-8 py-8 sm:px-10 sm:py-9 lg:rounded-r-container lg:rounded-bl-none lg:px-9">
             <h2 className="text-[clamp(20px,1.7vw,26px)] leading-[1.18] text-on-dark">
               Every Great Future Begins With the Right Guidance.
             </h2>

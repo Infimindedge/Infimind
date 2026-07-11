@@ -29,7 +29,10 @@ export function ChallengeTabList({ challenges, activeId, onSelect }: ChallengeTa
       role="tablist"
       aria-orientation="vertical"
       aria-label="Student challenges"
-      className="flex flex-col gap-2 lg:max-h-[440px] lg:overflow-y-auto lg:pr-1"
+      // Caps at ~4 tabs' worth of height so a 5th+ challenge (e.g. after
+      // admin adds more) requires scrolling instead of growing the sidebar
+      // taller than the panel beside it.
+      className="flex flex-col gap-2 lg:max-h-[206px] lg:overflow-y-auto lg:pr-1"
     >
       {challenges.map((challenge, index) => {
         const isActive = challenge.id === activeId;

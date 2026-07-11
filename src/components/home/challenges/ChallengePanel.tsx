@@ -39,12 +39,14 @@ export function ChallengePanel({ challenge }: ChallengePanelProps) {
             <h3 className="mt-2.5 font-display text-xl leading-tight text-ink">{challenge.challengeTitle}</h3>
             <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">{challenge.challengeDescription}</p>
             {challenge.challengeImageFilename ? (
-              <div className="mt-5 aspect-[4/3] w-full overflow-hidden rounded-lg">
-                <Photo
-                  filename={challenge.challengeImageFilename}
-                  alt={`${challenge.challengeTitle} — the challenge`}
-                  ratioLabel="4:3"
-                />
+              <div className="mt-auto pt-5">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
+                  <Photo
+                    filename={challenge.challengeImageFilename}
+                    alt={`${challenge.challengeTitle} — the challenge`}
+                    ratioLabel="4:3"
+                  />
+                </div>
               </div>
             ) : null}
           </div>
@@ -59,9 +61,11 @@ export function ChallengePanel({ challenge }: ChallengePanelProps) {
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-center font-display text-lg italic leading-snug text-success">
-              Personalized. Focused. Effective.
-            </p>
+            <div className="mt-auto flex items-center justify-center pt-5">
+              <p className="text-center font-display text-lg italic leading-snug text-success">
+                Personalized. Focused. Effective.
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-col overflow-y-auto p-5 sm:p-6">
@@ -75,12 +79,14 @@ export function ChallengePanel({ challenge }: ChallengePanelProps) {
               ))}
             </ul>
             {challenge.outcomeImageFilename ? (
-              <div className="mt-5 aspect-[4/3] w-full overflow-hidden rounded-lg">
-                <Photo
-                  filename={challenge.outcomeImageFilename}
-                  alt={`${challenge.challengeTitle} — the outcome`}
-                  ratioLabel="4:3"
-                />
+              <div className="mt-auto pt-5">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-lg">
+                  <Photo
+                    filename={challenge.outcomeImageFilename}
+                    alt={`${challenge.challengeTitle} — the outcome`}
+                    ratioLabel="4:3"
+                  />
+                </div>
               </div>
             ) : null}
           </div>
