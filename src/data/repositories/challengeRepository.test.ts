@@ -11,10 +11,15 @@ describe('challengeRepository', () => {
     }
   });
 
-  it('only weak-fundamentals has supplied content — the rest are empty by design', () => {
+  it('all six seeded challenges have supplied content and images', () => {
     const challenges = getChallenges();
-    const withContent = challenges.filter((c) => c.challengeDescription || c.approach.length > 0);
-    expect(withContent.map((c) => c.id)).toEqual(['weak-fundamentals']);
+    for (const challenge of challenges) {
+      expect(challenge.challengeDescription, `${challenge.id} description`).toBeTruthy();
+      expect(challenge.approach.length, `${challenge.id} approach`).toBeGreaterThan(0);
+      expect(challenge.outcomes.length, `${challenge.id} outcomes`).toBeGreaterThan(0);
+      expect(challenge.challengeImageFilename, `${challenge.id} challenge image`).toBeTruthy();
+      expect(challenge.outcomeImageFilename, `${challenge.id} outcome image`).toBeTruthy();
+    }
   });
 
   it('admin can add a new challenge and it appears immediately', () => {

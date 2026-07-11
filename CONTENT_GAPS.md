@@ -6,17 +6,9 @@ Everything below is intentionally left empty, placeholder, or draft — per the 
 
 All nine photo slots are supplied by the client and placed in `public/assets/photos/` (2026-07-10 and 2026-07-11 — resized/compressed for web, see `ASSET_CREDITS.md`). Confirm the client holds the rights to use/redistribute these images before public launch — they were not sourced from the licensed stock pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md`.
 
-## Interactive Challenges — 5 of 6 tabs, admin-editable
+## Interactive Challenges — resolved
 
-Only **Weak Fundamentals** has supplied copy (challenge description, approach, outcomes, both photos). The other five tabs render an in-progress placeholder instead of fabricated copy:
-
-- Study Discipline
-- Lack of Confidence
-- SAT Strategy
-- Exam Anxiety
-- University Planning
-
-**This is now editable from `/admin` → Challenges** (add, edit, reorder, delete tabs and their checklist items/photos) — no code changes required to fill these in.
+All six tabs (Weak Fundamentals, Study Discipline, Lack of Confidence, SAT Strategy, Exam Anxiety, University Planning) have client-supplied copy and both photos (2026-07-12 — see `ASSET_CREDITS.md`). Further edits, or additional challenges beyond these six, can be made from `/admin` → Challenges (add, edit, reorder, delete tabs and their checklist items/photos) — no code changes required.
 
 ## Testimonials — demo + sample content
 

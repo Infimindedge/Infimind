@@ -20,6 +20,16 @@ All eight photos were supplied directly by the client (`home page pictures (2).z
 | wellbeing-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | consultation-lounge.jpg | Supplied by client (`home page photos 12.zip`, "lounge photo.png") — replaces the 2026-07-11 version | Client-owned/licensed — verify before public launch | 2026-07-11 |
 | team-orbit-center.jpg | Supplied by client (`home page photos 12.zip`, "prof student.jpg") — center photo for the Student Success Team orbit animation | Client-owned/licensed — verify before public launch | 2026-07-11 |
+| study-discipline.jpg | Supplied by client (`challanges pictures.zip`, "study discipline_sad.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| study-discipline-outcome.jpg | Supplied by client (`challanges pictures.zip`, "study discipline.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| lack-of-confidence.jpg | Supplied by client (`challanges pictures.zip`, "lack of confidence sad.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| lack-of-confidence-outcome.jpg | Supplied by client (`challanges pictures.zip`, "lack of confidence.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| sat-strategy.jpg | Supplied by client (`challanges pictures.zip`, "sat strategy sad.jpg") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| sat-strategy-outcome.jpg | Supplied by client (`challanges pictures.zip`, "sat strategy.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| exam-anxiety.jpg | Supplied by client (`challanges pictures.zip`, "exam anxiety sad.jpg") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| exam-anxiety-outcome.jpg | Supplied by client (`challanges pictures.zip`, "exam anxiety.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| university-planning.jpg | Supplied by client (`challanges pictures.zip`, "University Planning sad.jpg") | Client-owned/licensed — verify before public launch | 2026-07-12 |
+| university-planning-outcome.jpg | Supplied by client (`challanges pictures.zip`, "university planning.png") | Client-owned/licensed — verify before public launch | 2026-07-12 |
 
 The original free-stock source pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md` are no longer needed for any of these files but remain as a fallback reference if a photo needs replacing again.
 
