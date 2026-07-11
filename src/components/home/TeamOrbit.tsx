@@ -25,8 +25,8 @@ export function TeamOrbit({ members }: TeamOrbitProps) {
 
       <div className="absolute inset-0 m-auto h-32 w-32 overflow-hidden rounded-full border-4 border-paper-pure shadow-hover sm:h-36 sm:w-36">
         <Photo
-          filename="personal-mentor.jpg"
-          alt="A mentor and student in conversation"
+          filename="team-orbit-center.jpg"
+          alt="A professor guiding a student"
           ratioLabel="1:1"
           className="h-full w-full"
         />

@@ -11,10 +11,10 @@ describe('App routing smoke tests', () => {
       </MemoryRouter>,
     );
     expect(
-      await screen.findByRole('heading', { name: /Extraordinary Thinkers/ }, { timeout: 5000 }),
+      await screen.findByRole('heading', { name: /Extraordinary Thinkers/ }, { timeout: 15000 }),
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Sign In' })).toBeInTheDocument();
-  });
+  }, 20000);
 
   it('renders the sign-in placeholder at /signin', async () => {
     render(

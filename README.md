@@ -60,18 +60,19 @@ A floating WhatsApp button appears on every homepage scroll position (bottom-rig
 
 ## Replacing placeholder images
 
-Real photography is in place for all nine specified slots (see `ASSET_CREDITS.md` for provenance and the "Known trade-offs" note about confirming usage rights):
+Real photography is in place for all ten specified slots (see `ASSET_CREDITS.md` for provenance and the "Known trade-offs" note about confirming usage rights):
 
 ```
-hero-student-study.jpg          (16:10, Hero) — ✅ in place
+hero-student-study.jpg          (~2:1, Hero — full-bleed section background) — ✅ in place
 school-program.jpg              (3:2, Programs) — ✅ in place
 sat-program.jpg                 (3:2, Programs) — ✅ in place
 weak-fundamentals.jpg           (4:3, Challenges panel — "The Challenge" column) — ✅ in place
 weak-fundamentals-outcome.jpg   (4:3, Challenges panel — "Expected Outcome" column) — ✅ in place
-personal-mentor.jpg             (4:3, Student Success Team card + orbit center photo) — ✅ in place
+personal-mentor.jpg             (4:3, Student Success Team card) — ✅ in place
 academic-counsellor.jpg         (4:3, Student Success Team) — ✅ in place
 wellbeing-counsellor.jpg        (4:3, Student Success Team) — ✅ in place
-consultation-lounge.jpg         (16:9 source, displayed ~2.48:1, Final CTA) — ✅ in place
+consultation-lounge.jpg         (~2.76:1, Final CTA — shown at its exact native ratio, never cropped) — ✅ in place
+team-orbit-center.jpg           (3:2, Student Success Team orbit center) — ✅ in place
 ```
 
 To add/replace a photo: save it under `public/assets/photos/` using the exact filename above — no code changes needed, `src/components/ui/Photo.tsx` picks it up automatically and falls back to a neutral placeholder if missing. Log provenance in `ASSET_CREDITS.md`.
@@ -92,8 +93,9 @@ Fonts: **Cormorant Garamond** (display/headings) and **Inter** (body/UI), loaded
 - The "Global Presence" map (`src/components/home/global-presence/`) renders real continent geography (`worldGeo.ts`, via `d3-geo`/`topojson-client`/`world-atlas`) with a uniform blue dot per active location — no connector line. Every location in `/admin` → Countries & Flags appears immediately, in real time.
 - Locations added via `/admin` default to the map's center position (`{x:50, y:50}`) since the admin form (per spec) doesn't include a lat/long picker. A dedicated map-position picker is a good Phase 2 addition.
 - **Flag emoji render as plain 2-letter codes ("GB", "AE", ...) on Windows**, in both the homepage marquee and the admin Locations table. This is a Windows/Chrome font limitation (no flag glyphs ship in the default emoji font) — real flag pictures render correctly on macOS, iOS, Android, and most Linux desktops with no code change needed. For a Windows-consistent look, use the "upload custom flag image" field in `/admin` → Countries & Flags → the location's form, which overrides the emoji with an uploaded PNG/SVG.
-- The 9 real photos (`ASSET_CREDITS.md`) were supplied by the client rather than the originally-suggested licensed stock sources — confirm usage rights before public launch.
-- The Student Success Team section's central orbit photo (`personal-mentor.jpg`) is reused from the "Personal Academic Mentor" card — there is no separate "student + teacher" photo yet. Swap it for a dedicated one if the client supplies one later.
+- The 10 real photos (`ASSET_CREDITS.md`) were supplied by the client rather than the originally-suggested licensed stock sources — confirm usage rights before public launch.
+- The Final CTA's navy content column is intentionally short (~230px at desktop) because its width/height are locked to `consultation-lounge.jpg`'s exact native aspect ratio (2.76:1) so the photo is never cropped, per the client's explicit request. Text sizing there is deliberately compact to fit.
+- The Challenges panel (`ChallengePanel.tsx`) has a fixed 440px height (matching the tab list's max-height) — any column whose content doesn't fit scrolls internally rather than growing the panel.
 - Published sample testimonials and two location story quotes are visible on the live homepage right now (client request, for design preview) — they are clearly labelled in `/admin` as `Sample preview — replace before launch` but read as ordinary testimonials to a public visitor. Replace or unpublish before launch.
 - The consultation form and WhatsApp button have no backend beyond `localStorage` — enquiries must be checked manually in `/admin` until a real notification integration exists.
 

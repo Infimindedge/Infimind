@@ -10,7 +10,7 @@ All eight photos were supplied directly by the client (`home page pictures (2).z
 
 | Filename | Source | License | Date added |
 |---|---|---|---|
-| hero-student-study.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
+| hero-student-study.jpg | Supplied by client (`home page photos 12.zip`, "updated hero panel.png") — replaces the 2026-07-10 version | Client-owned/licensed — verify before public launch | 2026-07-11 |
 | school-program.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | sat-program.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | weak-fundamentals.jpg | Supplied by client (`home page photos 11.zip`, "weak fundamental sad.png") | Client-owned/licensed — verify before public launch | 2026-07-11 |
@@ -18,7 +18,8 @@ All eight photos were supplied directly by the client (`home page pictures (2).z
 | personal-mentor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | academic-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | wellbeing-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
-| consultation-lounge.jpg | Supplied by client (`home page photos 11.zip`, "lounge photo.png") — replaces the 2026-07-10 version | Client-owned/licensed — verify before public launch | 2026-07-11 |
+| consultation-lounge.jpg | Supplied by client (`home page photos 12.zip`, "lounge photo.png") — replaces the 2026-07-11 version | Client-owned/licensed — verify before public launch | 2026-07-11 |
+| team-orbit-center.jpg | Supplied by client (`home page photos 12.zip`, "prof student.jpg") — center photo for the Student Success Team orbit animation | Client-owned/licensed — verify before public launch | 2026-07-11 |
 
 The original free-stock source pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md` are no longer needed for any of these files but remain as a fallback reference if a photo needs replacing again.
 
