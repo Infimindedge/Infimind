@@ -18,12 +18,15 @@ All eight photos were supplied directly by the client (`home page pictures (2).z
 | academic-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | wellbeing-counsellor.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
 | consultation-lounge.jpg | Supplied by client | Client-owned/licensed — verify before public launch | 2026-07-10 |
+| weak-fundamentals-outcome.jpg | — not yet supplied — | — | — |
 
-The original free-stock source pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md` are no longer needed for these eight files but remain as a fallback reference if any photo needs replacing.
+The original free-stock source pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md` are no longer needed for the eight supplied files but remain as a fallback reference if any photo needs replacing. `weak-fundamentals-outcome.jpg` is a new slot (see CONTENT_GAPS.md) with no source assigned yet.
 
 ## Icons
 
 UI icons are from [Lucide](https://lucide.dev) (ISC license), used via the `lucide-react` package — no separate attribution required per their license, noted here for completeness.
+
+The WhatsApp button (`src/components/ui/WhatsAppButton.tsx`) uses a hand-coded inline SVG of the standard WhatsApp glyph, used to identify the WhatsApp contact channel (nominative/functional use, not a claim of affiliation with WhatsApp/Meta).
 
 ## Fonts
 

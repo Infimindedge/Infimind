@@ -2,13 +2,15 @@
 
 Everything below is intentionally left empty, placeholder, or draft — per the build spec's instruction not to invent missing content, statistics, testimonials, or challenge descriptions. Nothing here blocks the app from running; each gap has a graceful, clearly-labelled fallback.
 
-## Photography — resolved
+## Photography — mostly resolved
 
-All eight expected photos were supplied by the client and placed in `public/assets/photos/` on 2026-07-10 (resized/compressed for web — see `ASSET_CREDITS.md`). No placeholders remain on the homepage. Confirm the client holds the rights to use/redistribute these images before public launch — they were not sourced from the licensed stock pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md`.
+Eight of nine photo slots were supplied by the client and placed in `public/assets/photos/` on 2026-07-10 (resized/compressed for web — see `ASSET_CREDITS.md`). Confirm the client holds the rights to use/redistribute these images before public launch — they were not sourced from the licensed stock pages in `docs/build-pack/ASSET_PLACEMENT_AND_SOURCES.md`.
 
-## Interactive Challenges — 5 of 6 tabs
+One slot is still a placeholder: **`weak-fundamentals-outcome.jpg`** (4:3, shown under "Expected Outcome" in the Weak Fundamentals challenge panel — added so both the Challenge and Outcome columns have matching photography, per the client's request to mirror the locked reference layout).
 
-Only **Weak Fundamentals** has supplied copy (challenge description, approach, outcomes). The other five tabs render an in-progress placeholder instead of a blank or fabricated panel:
+## Interactive Challenges — 5 of 6 tabs, admin-editable
+
+Only **Weak Fundamentals** has supplied copy (challenge description, approach, outcomes, both photos). The other five tabs render an in-progress placeholder instead of fabricated copy:
 
 - Study Discipline
 - Lack of Confidence
@@ -16,15 +18,17 @@ Only **Weak Fundamentals** has supplied copy (challenge description, approach, o
 - Exam Anxiety
 - University Planning
 
-Add real content in `src/data/seed/challenges.seed.ts` (`challengeTitle`, `challengeDescription`, `approach[]`, `outcomes[]`, optional `imageFilename`). No admin UI edits this yet — see README "Phase 2 notes".
+**This is now editable from `/admin` → Challenges** (add, edit, reorder, delete tabs and their checklist items/photos) — no code changes required to fill these in.
 
-## Testimonials
+## Testimonials — demo + sample content
 
-The seed data (`src/data/seed/testimonials.seed.ts`) contains only two clearly-labelled demo records, both **unpublished**, both with placeholder text like `[Replace with a genuine family quote before publishing.]`. The public "Voices of Our Families" carousel therefore shows an empty state ("Family testimonials are coming soon.") until a real testimonial is added and published from `/admin`.
+`src/data/seed/testimonials.seed.ts` contains:
+- Two **unpublished** demo records with obvious placeholder text (`[Replace with a genuine family quote before publishing.]`) — admin-only scaffolding, never shown publicly.
+- Four **published sample records**, added at the client's explicit request so the "Voices of Our Families" carousel could be evaluated with real-looking content instead of an empty state. Each has `displayName: "Sample preview — replace before launch"` visible in the `/admin` Testimonials table, but reads as an ordinary testimonial to a public site visitor. **Replace or unpublish these from `/admin` before public launch.**
 
-## Global Presence — per-location quotes
+## Global Presence — sample story content
 
-The eight seeded locations (London, Dubai, Toronto, Singapore, Zurich, Hong Kong, Melbourne, Amsterdam) have no `quote`, `attribution`, or `storyLabel` — the map's story card shows only the flag, city, and country for each until an admin adds a real family quote via `/admin` → Countries & Flags.
+Two of the eight seeded locations (London, Singapore) carry a sample `quote`/`attribution`/`storyLabel`, added for the same reason as the sample testimonials above — so the map's story card could be previewed with real-looking content. Both are labelled `storyLabel: "Sample preview — replace before launch"`. The other six locations (Dubai, Toronto, Zurich, Hong Kong, Melbourne, Amsterdam) have no quote and show only flag/city/country, which is the intended default appearance. Edit or clear all of these via `/admin` → Countries & Flags before public launch.
 
 ## Navigation targets that don't exist yet
 
@@ -33,3 +37,7 @@ The eight seeded locations (London, Dubai, Toronto, Singapore, Zurich, Hong Kong
 ## Admin — map position picker
 
 New locations created in `/admin` default to the map's center (`{x: 50, y: 50}`) rather than a real geographic position, since the admin form spec doesn't include a lat/long picker. A dedicated picker (or a searchable city list with known coordinates) is recommended for Phase 2.
+
+## Consultation enquiries — no notification backend
+
+Submissions from the "Schedule a Private Consultation" form are stored via `enquiryRepository` (`localStorage`) and viewable at `/admin` → Consultation Requests, but nothing emails or pages anyone when a new one arrives. Someone needs to check that tab regularly until a real notification integration (email, Slack, CRM webhook, ...) is added — see README "Phase 2 notes".
