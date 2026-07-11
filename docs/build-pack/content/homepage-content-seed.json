@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "eyebrow": "PRIVATE LEARNING PROGRAMS",
+    "headline": "Where Exceptional Students Become Extraordinary Thinkers.",
+    "body": "Infimind partners with ambitious families to build strong academic foundations, cultivate intellectual confidence, and prepare students for success in school and beyond.",
+    "primaryCta": "Schedule a Private Consultation",
+    "secondaryCta": "Explore Programs"
+  },
+  "programs": [
+    {
+      "name": "School Program",
+      "description": "Build strong academic foundations, confidence and consistency."
+    },
+    {
+      "name": "SAT Program",
+      "description": "Strategic preparation for ambitious students aiming for the world's leading universities."
+    }
+  ],
+  "challenges": [
+    {
+      "id": "weak-fundamentals",
+      "label": "Weak Fundamentals",
+      "challengeTitle": "Weak Fundamentals",
+      "challengeDescription": "The student memorises but doesn't truly understand concepts, leading to gaps and low confidence.",
+      "approach": [
+        "Personal Learning Plan",
+        "One-to-one Mentor Support",
+        "Concept Reinforcement",
+        "Practice & Feedback",
+        "Parent Progress Updates"
+      ],
+      "outcomes": [
+        "Stronger conceptual clarity",
+        "Improved grades",
+        "Confidence in problem solving",
+        "Consistent academic growth"
+      ]
+    },
+    {
+      "id": "study-discipline",
+      "label": "Study Discipline",
+      "approach": [],
+      "outcomes": []
+    },
+    {
+      "id": "lack-of-confidence",
+      "label": "Lack of Confidence",
+      "approach": [],
+      "outcomes": []
+    },
+    {
+      "id": "sat-strategy",
+      "label": "SAT Strategy",
+      "approach": [],
+      "outcomes": []
+    },
+    {
+      "id": "exam-anxiety",
+      "label": "Exam Anxiety",
+      "approach": [],
+      "outcomes": []
+    },
+    {
+      "id": "university-planning",
+      "label": "University Planning",
+      "approach": [],
+      "outcomes": []
+    }
+  ],
+  "locations": [
+    {
+      "country": "United Kingdom",
+      "city": "London",
+      "isoCode": "GB"
+    },
+    {
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "isoCode": "AE"
+    },
+    {
+      "country": "Canada",
+      "city": "Toronto",
+      "isoCode": "CA"
+    },
+    {
+      "country": "Singapore",
+      "city": "Singapore",
+      "isoCode": "SG"
+    },
+    {
+      "country": "Switzerland",
+      "city": "Zurich",
+      "isoCode": "CH"
+    },
+    {
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "isoCode": "HK"
+    },
+    {
+      "country": "Australia",
+      "city": "Melbourne",
+      "isoCode": "AU"
+    },
+    {
+      "country": "Netherlands",
+      "city": "Amsterdam",
+      "isoCode": "NL"
+    }
+  ]
+}

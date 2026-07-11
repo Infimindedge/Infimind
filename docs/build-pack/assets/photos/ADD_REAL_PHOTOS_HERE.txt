@@ -1,0 +1,1 @@
+Add the eight approved real photographs using filenames in ASSET_PLACEMENT_AND_SOURCES.md

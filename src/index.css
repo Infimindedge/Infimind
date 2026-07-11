@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   Infimind design tokens — exact values from CLAUDE_CODE_MASTER_PROMPT.md
+   ========================================================================== */
+:root {
+  --bg-main: #fcfbf8;
+  --bg-pure: #ffffff;
+  --bg-soft: #f6f3ed;
+  --bg-navy: #071a3d;
+  --text-primary: #071a3d;
+  --text-secondary: #4e5968;
+  --text-muted: #7a8491;
+  --text-on-dark: #ffffff;
+  --accent-gold: #c78b45;
+  --accent-gold-dark: #a96d2e;
+  --accent-gold-soft: #f2e5d3;
+  --accent-blue: #2878ff;
+  --accent-blue-soft: #eaf2ff;
+  --border-light: #e7e2da;
+  --border-medium: #d7d0c5;
+  --success: #2e7d62;
+  --error: #b54747;
+  --warning: #b7791f;
+  --shadow-soft: 0 12px 36px rgba(7, 26, 61, 0.06);
+  --shadow-hover: 0 18px 48px rgba(7, 26, 61, 0.1);
+}
+
+/* Map tokens into Tailwind v4's CSS-first theme so utilities (bg-gold,
+   text-ink-muted, shadow-soft, font-display, rounded-card, ...) are
+   generated directly from the tokens above — one source of truth. */
+@theme {
+  --color-paper: var(--bg-main);
+  --color-paper-pure: var(--bg-pure);
+  --color-paper-soft: var(--bg-soft);
+  --color-navy: var(--bg-navy);
+  --color-ink: var(--text-primary);
+  --color-ink-soft: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-on-dark: var(--text-on-dark);
+  --color-gold: var(--accent-gold);
+  --color-gold-dark: var(--accent-gold-dark);
+  --color-gold-soft: var(--accent-gold-soft);
+  --color-blue: var(--accent-blue);
+  --color-blue-soft: var(--accent-blue-soft);
+  --color-border: var(--border-light);
+  --color-border-strong: var(--border-medium);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --shadow-soft: 0 12px 36px rgba(7, 26, 61, 0.06);
+  --shadow-hover: 0 18px 48px rgba(7, 26, 61, 0.1);
+
+  --radius-card: 14px;
+  --radius-container: 18px;
+  --radius-btn: 6px;
+
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Visible focus ring for keyboard users across the app */
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--bg-navy);
+  color: var(--text-on-dark);
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Eyebrow label style: 12px uppercase, letter-spacing .12em */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Section rhythm: 96-128 desktop, 64-80 mobile */
+.section-spacing {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+@media (min-width: 1280px) {
+  .section-spacing {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+}
+
+/* ==========================================================================
+   Marquee (Global Presence — moving city list)
+   ========================================================================== */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: var(--animate-marquee);
+}
+.marquee-track[data-paused='true'] {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    overflow-x: auto;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "colors": {
+    "bgMain": "#FCFBF8",
+    "bgPure": "#FFFFFF",
+    "bgSoft": "#F6F3ED",
+    "navy": "#071A3D",
+    "textSecondary": "#4E5968",
+    "textMuted": "#7A8491",
+    "gold": "#C78B45",
+    "goldDark": "#A96D2E",
+    "goldSoft": "#F2E5D3",
+    "blue": "#2878FF",
+    "blueSoft": "#EAF2FF",
+    "borderLight": "#E7E2DA",
+    "borderMedium": "#D7D0C5"
+  },
+  "fonts": {
+    "display": "Cormorant Garamond",
+    "body": "Inter"
+  },
+  "layout": {
+    "maxWidth": 1440,
+    "contentWidth": 1280,
+    "cardRadius": 14,
+    "containerRadius": 18
+  }
+}
