@@ -3,12 +3,19 @@ import { AnimatePresence } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { ChallengeTabList } from './challenges/ChallengeTabList';
 import { ChallengePanel } from './challenges/ChallengePanel';
-import { getChallenges } from '@/data/repositories/challengeRepository';
+import { challengeRepository, getChallenges, CHALLENGES_STORAGE_KEY } from '@/data/repositories/challengeRepository';
+import { useCollection } from '@/hooks/useCollection';
 
 export function Challenges() {
+  useCollection(challengeRepository, CHALLENGES_STORAGE_KEY);
   const challenges = getChallenges();
   const [activeId, setActiveId] = useState(challenges[0]?.id ?? '');
+
+  // Derived, not stored: if admin removes the active challenge (or on first
+  // render before any selection), fall back to the first available one.
   const activeChallenge = challenges.find((challenge) => challenge.id === activeId) ?? challenges[0];
+
+  if (challenges.length === 0) return null;
 
   return (
     <section className="section-spacing bg-paper-soft">

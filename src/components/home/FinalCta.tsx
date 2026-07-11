@@ -1,8 +1,12 @@
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Photo } from '@/components/ui/Photo';
+import { useConsultationModal } from '@/context/ConsultationModalContext';
+import { WHATSAPP_URL } from '@/components/ui/WhatsAppButton';
 
 export function FinalCta() {
+  const { openConsultation } = useConsultationModal();
+
   return (
     <section id="consultation" className="section-spacing pt-0">
       <Container width="max">
@@ -23,13 +27,26 @@ export function FinalCta() {
               Whether your child is striving for stronger school performance or preparing for the world&rsquo;s
               leading universities, every journey begins with understanding their unique potential.
             </p>
-            <a
-              href="/signin"
+            <button
+              type="button"
+              onClick={openConsultation}
               className="mt-8 inline-flex w-fit min-h-[44px] items-center justify-center gap-2 rounded-btn bg-gold px-6 py-3.5 text-sm font-medium text-navy transition-colors hover:bg-gold-dark hover:text-on-dark"
             >
               Schedule a Private Consultation
               <ArrowRight size={16} aria-hidden="true" />
-            </a>
+            </button>
+
+            <div className="mt-10 flex flex-col gap-3 border-t border-on-dark/15 pt-8 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-on-dark/70">Prefer a quick chat? Message us directly.</p>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit min-h-[44px] items-center justify-center gap-2 rounded-btn border border-on-dark/25 px-5 py-3 text-sm font-medium text-on-dark transition-colors hover:border-on-dark/50 hover:bg-on-dark/5"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </Container>

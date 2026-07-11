@@ -45,7 +45,11 @@ export interface ChallengeItem {
   challengeDescription?: string;
   approach: string[];
   outcomes: string[];
-  imageFilename?: string;
+  /** Photo shown under "The Challenge" column. */
+  challengeImageFilename?: string;
+  /** Photo shown under "Expected Outcome" column. */
+  outcomeImageFilename?: string;
+  sortOrder: number;
 }
 
 export interface ProgramSummary {
@@ -67,4 +71,18 @@ export interface SuccessTeamMember {
   role: string;
   imageFilename: string;
   points: string[];
+}
+
+export interface ConsultationEnquiry {
+  id: string;
+  name: string;
+  email: string;
+  whatsapp: string;
+  country: string;
+  program: ProgramId;
+  message: string;
+  /** ISO timestamp of submission. */
+  createdAt: string;
+  /** Has the team followed up with this family yet? */
+  contacted: boolean;
 }

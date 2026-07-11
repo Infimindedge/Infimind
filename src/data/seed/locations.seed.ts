@@ -3,9 +3,13 @@ import type { LocationItem } from '@/types/content';
 /**
  * Initial cities per the locked spec. Map positions are approximate
  * equirectangular percentages (x = longitude, y = latitude) used to place
- * pins on the abstract dot map. Quote/attribution are intentionally left
- * empty — no testimonial content is invented here; admins add real family
- * quotes per location later.
+ * pins on the abstract dot map.
+ *
+ * Three locations carry a sample story quote/attribution, added at the
+ * client's explicit request so the map's story card could be previewed
+ * with real-looking content instead of an empty state. These are NOT
+ * genuine family quotes — edit or clear them from /admin before public
+ * launch. See CONTENT_GAPS.md.
  */
 export const locationsSeed: LocationItem[] = [
   {
@@ -16,6 +20,9 @@ export const locationsSeed: LocationItem[] = [
     active: true,
     sortOrder: 1,
     mapPosition: { x: 50, y: 21 },
+    storyLabel: 'Sample preview — replace before launch',
+    quote: 'Infimind gave our son a study routine that actually stuck — and the results followed.',
+    attribution: 'Parent, London',
   },
   {
     id: 'loc-dubai',
@@ -43,6 +50,9 @@ export const locationsSeed: LocationItem[] = [
     active: true,
     sortOrder: 4,
     mapPosition: { x: 79, y: 49 },
+    storyLabel: 'Sample preview — replace before launch',
+    quote: 'Infimind has transformed the way our daughter learns — she asks for study time now.',
+    attribution: 'Parent, Singapore',
   },
   {
     id: 'loc-zurich',

@@ -16,10 +16,14 @@ interface PhotoProps {
  * missing (Phase 1 ships without redistributed third-party photography), it
  * falls back to an elegant neutral placeholder naming the expected filename
  * and aspect ratio, per the build spec — never an AI-generated substitute.
+ *
+ * `filename` may also be a data: URL (admin-uploaded images, e.g. for
+ * Challenges added via /admin) — those are rendered as-is, no placeholder.
  */
 export function Photo({ filename, alt, ratioLabel, className, priority = false }: PhotoProps) {
   const [errored, setErrored] = useState(false);
-  const src = `/assets/photos/${filename}`;
+  const isDataUrl = filename.startsWith('data:');
+  const src = isDataUrl ? filename : `/assets/photos/${filename}`;
 
   if (errored) {
     return (

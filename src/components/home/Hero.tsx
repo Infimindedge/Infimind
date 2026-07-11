@@ -3,12 +3,14 @@ import { motion, useMotionValue, useReducedMotion, useSpring, useTransform, type
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Photo } from '@/components/ui/Photo';
+import { useConsultationModal } from '@/context/ConsultationModalContext';
 
 const PARALLAX_RANGE = 8;
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const { openConsultation } = useConsultationModal();
   const figureRef = useRef<HTMLDivElement>(null);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -57,13 +59,14 @@ export function Hero() {
               confidence, and prepare students for success in school and beyond.
             </motion.p>
             <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="#consultation"
+              <button
+                type="button"
+                onClick={openConsultation}
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-btn bg-navy px-6 py-3.5 text-sm font-medium text-on-dark shadow-soft transition-shadow hover:shadow-hover"
               >
                 Schedule a Private Consultation
                 <ArrowRight size={16} aria-hidden="true" />
-              </a>
+              </button>
               <a
                 href="#programs"
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-btn border border-border-strong px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:border-navy"
@@ -82,6 +85,10 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: EASE_OUT, delay: 0.15 }}
             className="overflow-hidden rounded-container"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent 0%, black 16%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 16%)',
+            }}
           >
             <motion.div style={{ x: translateX, y: translateY }} className="aspect-[16/10] w-full">
               <Photo

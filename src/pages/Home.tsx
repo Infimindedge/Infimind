@@ -8,22 +8,27 @@ import { SuccessTeam } from '@/components/home/SuccessTeam';
 import { Testimonials } from '@/components/home/Testimonials';
 import { LearningJourney } from '@/components/home/LearningJourney';
 import { FinalCta } from '@/components/home/FinalCta';
+import { ConsultationModalProvider } from '@/context/ConsultationModalContext';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden">
-      <Navbar />
-      <main id="main-content" className="flex-1">
-        <Hero />
-        <GlobalPresence />
-        <Programs />
-        <Challenges />
-        <SuccessTeam />
-        <Testimonials />
-        <LearningJourney />
-        <FinalCta />
-      </main>
-      <Footer />
-    </div>
+    <ConsultationModalProvider>
+      <div className="flex min-h-screen flex-col overflow-x-hidden">
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          <Hero />
+          <GlobalPresence />
+          <Programs />
+          <Challenges />
+          <SuccessTeam />
+          <Testimonials />
+          <LearningJourney />
+          <FinalCta />
+        </main>
+        <Footer />
+      </div>
+      <WhatsAppButton />
+    </ConsultationModalProvider>
   );
 }

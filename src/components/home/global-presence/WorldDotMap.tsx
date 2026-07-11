@@ -5,13 +5,16 @@ import { generateDotMap, dotsToPath } from './dotMapData';
 
 const VIEW_W = 1000;
 const VIEW_H = 500;
-const BACKGROUND_DOTS_PATH = dotsToPath(generateDotMap(), VIEW_W, VIEW_H, 1.7);
+// Denser grid than the perf-constrained earlier pass — safe now because all
+// dots are collapsed into a single <path> (see dotsToPath), so point count
+// doesn't add per-node React/DOM cost.
+const BACKGROUND_DOTS_PATH = dotsToPath(generateDotMap(1.8, 2.4), VIEW_W, VIEW_H, 1.6);
 /** Decorative network hub the connector line arcs from — not a real office location. */
 const HUB = { x: 46, y: 40 };
 
 /** Static background — memoized so it never re-renders on the 4.5s location-cycle tick. */
 const MapBackground = memo(function MapBackground() {
-  return <path d={BACKGROUND_DOTS_PATH} fill="var(--border-medium)" opacity={0.55} />;
+  return <path d={BACKGROUND_DOTS_PATH} fill="var(--border-medium)" opacity={0.75} />;
 });
 
 interface WorldDotMapProps {

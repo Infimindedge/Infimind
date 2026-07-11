@@ -5,11 +5,20 @@ import { Logo } from '@/components/layout/Logo';
 import { Container } from '@/components/ui/Container';
 import { TestimonialsAdmin } from './testimonials/TestimonialsAdmin';
 import { LocationsAdmin } from './locations/LocationsAdmin';
+import { ChallengesAdmin } from './challenges/ChallengesAdmin';
+import { EnquiriesAdmin } from './enquiries/EnquiriesAdmin';
 import { cn } from '@/lib/utils';
 
-type Tab = 'testimonials' | 'locations';
+type Tab = 'testimonials' | 'locations' | 'challenges' | 'enquiries';
 
 const SESSION_KEY = 'infimind:admin-auth';
+
+const TABS: { id: Tab; label: string }[] = [
+  { id: 'testimonials', label: 'Testimonials' },
+  { id: 'locations', label: 'Countries & Flags' },
+  { id: 'challenges', label: 'Challenges' },
+  { id: 'enquiries', label: 'Consultation Requests' },
+];
 
 export function AdminLayout() {
   const [tab, setTab] = useState<Tab>('testimonials');
@@ -44,13 +53,8 @@ export function AdminLayout() {
       </header>
 
       <Container width="max" className="py-10">
-        <div className="mb-8 flex gap-2 border-b border-border">
-          {(
-            [
-              { id: 'testimonials', label: 'Testimonials' },
-              { id: 'locations', label: 'Countries & Flags' },
-            ] as { id: Tab; label: string }[]
-          ).map((item) => (
+        <div className="mb-8 flex flex-wrap gap-2 border-b border-border">
+          {TABS.map((item) => (
             <button
               key={item.id}
               type="button"
@@ -66,7 +70,10 @@ export function AdminLayout() {
           ))}
         </div>
 
-        {tab === 'testimonials' ? <TestimonialsAdmin /> : <LocationsAdmin />}
+        {tab === 'testimonials' ? <TestimonialsAdmin /> : null}
+        {tab === 'locations' ? <LocationsAdmin /> : null}
+        {tab === 'challenges' ? <ChallengesAdmin /> : null}
+        {tab === 'enquiries' ? <EnquiriesAdmin /> : null}
       </Container>
     </div>
   );

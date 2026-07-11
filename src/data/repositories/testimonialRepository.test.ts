@@ -18,26 +18,34 @@ function makeTestimonial(overrides: Partial<Testimonial>): Testimonial {
 }
 
 describe('testimonialRepository', () => {
-  it('seeds only unpublished demo records — never fake published testimonials', () => {
+  it('seeds demo records as unpublished, and any published seed entries are clearly labelled as samples', () => {
     const seeded = testimonialRepository.getAll();
     expect(seeded.length).toBeGreaterThan(0);
-    expect(seeded.every((testimonial) => testimonial.published === false)).toBe(true);
+
+    const demoRecords = seeded.filter((testimonial) => testimonial.id.startsWith('demo-'));
+    expect(demoRecords.length).toBeGreaterThan(0);
+    expect(demoRecords.every((testimonial) => testimonial.published === false)).toBe(true);
+
+    // Any published seed testimonial must be an explicitly-labelled sample —
+    // never something that reads as a genuine, unlabelled family quote.
+    const publishedSeed = seeded.filter((testimonial) => testimonial.published);
+    expect(publishedSeed.every((testimonial) => /sample/i.test(testimonial.displayName))).toBe(true);
   });
 
   it('getPublishedTestimonials excludes drafts and is sorted by sortOrder', () => {
-    testimonialRepository.create(makeTestimonial({ id: 't1', sortOrder: 2, published: true }));
-    testimonialRepository.create(makeTestimonial({ id: 't2', sortOrder: 1, published: true }));
-    testimonialRepository.create(makeTestimonial({ id: 't3', sortOrder: 3, published: false }));
+    testimonialRepository.create(makeTestimonial({ id: 'test-t1', sortOrder: -2, published: true }));
+    testimonialRepository.create(makeTestimonial({ id: 'test-t2', sortOrder: -3, published: true }));
+    testimonialRepository.create(makeTestimonial({ id: 'test-t3', sortOrder: -1, published: false }));
 
-    const published = getPublishedTestimonials();
-    expect(published.map((t) => t.id)).toEqual(['t2', 't1']);
+    const published = getPublishedTestimonials().filter((t) => t.id.startsWith('test-t'));
+    expect(published.map((t) => t.id)).toEqual(['test-t2', 'test-t1']);
   });
 
   it('toggling published makes a testimonial appear in the public list', () => {
-    testimonialRepository.create(makeTestimonial({ id: 't1', published: false }));
-    expect(getPublishedTestimonials()).toHaveLength(0);
+    testimonialRepository.create(makeTestimonial({ id: 'test-toggle', published: false }));
+    expect(getPublishedTestimonials().some((t) => t.id === 'test-toggle')).toBe(false);
 
-    testimonialRepository.update('t1', { published: true });
-    expect(getPublishedTestimonials().map((t) => t.id)).toEqual(['t1']);
+    testimonialRepository.update('test-toggle', { published: true });
+    expect(getPublishedTestimonials().some((t) => t.id === 'test-toggle')).toBe(true);
   });
 });

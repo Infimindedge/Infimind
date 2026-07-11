@@ -156,21 +156,24 @@ button {
   letter-spacing: 0.12em;
 }
 
-/* Section rhythm: 96-128 desktop, 64-80 mobile */
+/* Section rhythm — tightened from the original 96-128/64-80 spec values,
+   which read as excessive empty space once real content/photos were in
+   place. Kept asymmetric top/bottom trimming so adjoining sections don't
+   double up into a huge gap at their shared boundary. */
 .section-spacing {
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 44px;
+  padding-bottom: 44px;
 }
 @media (min-width: 768px) {
   .section-spacing {
-    padding-top: 96px;
-    padding-bottom: 96px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
 @media (min-width: 1280px) {
   .section-spacing {
-    padding-top: 128px;
-    padding-bottom: 128px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 }
 

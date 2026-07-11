@@ -1,11 +1,14 @@
 import type { ChallengeItem } from '@/types/content';
 import { challengesSeed } from '@/data/seed/challenges.seed';
+import { createCollectionRepository } from './createCollectionRepository';
 
-/**
- * Read-only in Phase 1 — no admin module edits challenges yet. Kept behind
- * a function (not a direct import) so a future admin module or remote
- * source can replace this without changing call sites.
- */
+export const CHALLENGES_STORAGE_KEY = 'infimind:challenges';
+
+export const challengeRepository = createCollectionRepository<ChallengeItem>(
+  CHALLENGES_STORAGE_KEY,
+  challengesSeed,
+);
+
 export function getChallenges(): ChallengeItem[] {
-  return challengesSeed;
+  return challengeRepository.getAll().sort((a, b) => a.sortOrder - b.sortOrder);
 }
