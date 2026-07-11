@@ -1,48 +1,51 @@
 import { useMemo, memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import type { LocationItem } from '@/types/content';
-import { generateDotMap, dotsToPath } from './dotMapData';
+import { WORLD_LAND_PATH, MAP_VIEW_WIDTH, MAP_VIEW_HEIGHT, projectLonLat, percentToLonLat } from './worldGeo';
 
-const VIEW_W = 1000;
-const VIEW_H = 500;
-// Denser grid than the perf-constrained earlier pass — safe now because all
-// dots are collapsed into a single <path> (see dotsToPath), so point count
-// doesn't add per-node React/DOM cost.
-const BACKGROUND_DOTS_PATH = dotsToPath(generateDotMap(1.8, 2.4), VIEW_W, VIEW_H, 1.6);
 /** Decorative network hub the connector line arcs from — not a real office location. */
-const HUB = { x: 46, y: 40 };
+const HUB_LONLAT = percentToLonLat(46, 40);
 
-/** Static background — memoized so it never re-renders on the 4.5s location-cycle tick. */
-const MapBackground = memo(function MapBackground() {
-  return <path d={BACKGROUND_DOTS_PATH} fill="var(--border-medium)" opacity={0.75} />;
+/** Static continent silhouette — memoized so it never re-renders on the 4.5s location-cycle tick. */
+const MapLand = memo(function MapLand() {
+  return (
+    <path
+      d={WORLD_LAND_PATH}
+      fill="var(--accent-gold-soft)"
+      stroke="var(--border-medium)"
+      strokeWidth={0.75}
+    />
+  );
 });
 
-interface WorldDotMapProps {
+interface WorldMapProps {
   locations: LocationItem[];
   activeIndex: number;
 }
 
-export function WorldDotMap({ locations, activeIndex }: WorldDotMapProps) {
+export function WorldMap({ locations, activeIndex }: WorldMapProps) {
   const reduceMotion = useReducedMotion();
   const active = locations[activeIndex];
 
+  const hub = useMemo(() => projectLonLat(HUB_LONLAT[0], HUB_LONLAT[1]), []);
+
   const connectorPath = useMemo(() => {
     if (!active) return '';
-    const start = { x: (HUB.x / 100) * VIEW_W, y: (HUB.y / 100) * VIEW_H };
-    const end = { x: (active.mapPosition.x / 100) * VIEW_W, y: (active.mapPosition.y / 100) * VIEW_H };
-    const midX = (start.x + end.x) / 2;
-    const controlY = Math.min(start.y, end.y) - 60;
-    return `M ${start.x} ${start.y} Q ${midX} ${controlY} ${end.x} ${end.y}`;
-  }, [active]);
+    const [lon, lat] = percentToLonLat(active.mapPosition.x, active.mapPosition.y);
+    const end = projectLonLat(lon, lat);
+    const midX = (hub.x + end.x) / 2;
+    const controlY = Math.min(hub.y, end.y) - 60;
+    return `M ${hub.x} ${hub.y} Q ${midX} ${controlY} ${end.x} ${end.y}`;
+  }, [active, hub]);
 
   return (
     <svg
-      viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+      viewBox={`0 0 ${MAP_VIEW_WIDTH} ${MAP_VIEW_HEIGHT}`}
       role="img"
-      aria-label="Stylised world map showing Infimind's education destinations"
+      aria-label="World map showing Infimind's education destinations"
       className="h-full w-full"
     >
-      <MapBackground />
+      <MapLand />
 
       {active && connectorPath ? (
         <motion.path
@@ -54,14 +57,14 @@ export function WorldDotMap({ locations, activeIndex }: WorldDotMapProps) {
           strokeLinecap="round"
           strokeDasharray="4 5"
           initial={{ pathLength: reduceMotion ? 1 : 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.55 }}
+          animate={{ pathLength: 1, opacity: 0.6 }}
           transition={{ duration: reduceMotion ? 0.001 : 0.9, ease: 'easeInOut' }}
         />
       ) : null}
 
       {locations.map((location, index) => {
-        const cx = (location.mapPosition.x / 100) * VIEW_W;
-        const cy = (location.mapPosition.y / 100) * VIEW_H;
+        const [lon, lat] = percentToLonLat(location.mapPosition.x, location.mapPosition.y);
+        const { x: cx, y: cy } = projectLonLat(lon, lat);
         const isActive = index === activeIndex;
         return (
           <g key={location.id}>
@@ -91,7 +94,14 @@ export function WorldDotMap({ locations, activeIndex }: WorldDotMapProps) {
                 />
               </>
             ) : null}
-            <circle cx={cx} cy={cy} r={isActive ? 6 : 4} fill={isActive ? 'var(--accent-blue)' : 'var(--accent-gold)'} />
+            <circle
+              cx={cx}
+              cy={cy}
+              r={isActive ? 6 : 4}
+              fill={isActive ? 'var(--accent-blue)' : 'var(--accent-gold-dark)'}
+              stroke="var(--bg-pure)"
+              strokeWidth={1.5}
+            />
           </g>
         );
       })}

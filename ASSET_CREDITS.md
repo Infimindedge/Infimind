@@ -35,4 +35,4 @@ The WhatsApp button (`src/components/ui/WhatsAppButton.tsx`) uses a hand-coded i
 
 ## World map
 
-The "Global Presence" map is an original, illustrative dot-grid generated in code (`src/components/home/global-presence/dotMapData.ts`) from simplified continent lat/long bands — not a third-party map asset, and not geographically precise. No external map data or imagery is used.
+The "Global Presence" map renders real continent geography from [`world-atlas`](https://github.com/topojson/world-atlas) (`land-110m.json`, ISC license — pre-built TopoJSON derived from [Natural Earth](https://www.naturalearthdata.com/) public-domain data), converted to an SVG path at build time with [`d3-geo`](https://github.com/d3/d3-geo) (ISC) and [`topojson-client`](https://github.com/topojson/topojson-client) (BSD-3-Clause). See `src/components/home/global-presence/worldGeo.ts`. An earlier hand-coded dot-grid approximation was replaced with this for geographic accuracy.

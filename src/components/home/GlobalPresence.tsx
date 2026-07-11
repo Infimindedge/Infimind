@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
-import { WorldDotMap } from './global-presence/WorldDotMap';
+import { WorldMap } from './global-presence/WorldMap';
 import { StoryCard } from './global-presence/StoryCard';
 import { LocationMarquee } from './global-presence/LocationMarquee';
 import { locationRepository, getActiveLocations } from '@/data/repositories/locationRepository';
@@ -64,8 +64,8 @@ export function GlobalPresence() {
               <p className="mt-3 text-ink-soft">Our students call these cities home.</p>
             </div>
 
-            <div className="aspect-[2/1] w-full">
-              <WorldDotMap locations={locations} activeIndex={safeIndex} />
+            <div className="aspect-[1000/520] w-full">
+              <WorldMap locations={locations} activeIndex={safeIndex} />
             </div>
 
             <div className="h-full">
