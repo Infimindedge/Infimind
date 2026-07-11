@@ -64,15 +64,65 @@
 
 /* ==========================================================================
    Base
+   Wrapped in Tailwind's `base` layer — critical: unlayered CSS always
+   outranks layered CSS in the cascade regardless of specificity, so plain
+   `h1 { color: ... }` here would silently beat every `text-*` utility
+   applied to a heading anywhere in the app (this caused a real bug: a
+   navy-on-navy invisible headline in the Final CTA section). Layering
+   these rules lets utility classes override them as expected.
    ========================================================================== */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  /* Visible focus ring for keyboard users across the app */
+  :focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -89,115 +139,76 @@ html {
   }
 }
 
-body {
-  margin: 0;
-  background: var(--bg-main);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-p {
-  margin: 0;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button {
-  font-family: inherit;
-}
-
-/* Visible focus ring for keyboard users across the app */
-:focus-visible {
-  outline: 2px solid var(--accent-blue);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* Skip link */
-.skip-link {
-  position: absolute;
-  left: 1rem;
-  top: -3rem;
-  background: var(--bg-navy);
-  color: var(--text-on-dark);
-  padding: 0.75rem 1.25rem;
-  border-radius: 6px;
-  z-index: 100;
-  transition: top 0.15s ease;
-}
-.skip-link:focus {
-  top: 1rem;
-}
-
-/* Eyebrow label style: 12px uppercase, letter-spacing .12em */
-.eyebrow {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-/* Section rhythm — tightened from the original 96-128/64-80 spec values,
-   which read as excessive empty space once real content/photos were in
-   place. Kept asymmetric top/bottom trimming so adjoining sections don't
-   double up into a huge gap at their shared boundary. */
-.section-spacing {
-  padding-top: 44px;
-  padding-bottom: 44px;
-}
-@media (min-width: 768px) {
-  .section-spacing {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-}
-@media (min-width: 1280px) {
-  .section-spacing {
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-}
-
 /* ==========================================================================
-   Marquee (Global Presence — moving city list)
+   Reusable component-level classes
    ========================================================================== */
+@layer components {
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    background: var(--bg-navy);
+    color: var(--text-on-dark);
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    z-index: 100;
+    transition: top 0.15s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Eyebrow label style: 12px uppercase, letter-spacing .12em */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Section rhythm — tightened from the original 96-128/64-80 spec values,
+     which read as excessive empty space once real content/photos were in
+     place. Kept asymmetric top/bottom trimming so adjoining sections don't
+     double up into a huge gap at their shared boundary. */
+  .section-spacing {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+  @media (min-width: 768px) {
+    .section-spacing {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .section-spacing {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+  }
+
+  /* Marquee (Global Presence — moving city list) */
+  .marquee-track {
+    animation: var(--animate-marquee);
+  }
+  .marquee-track[data-paused='true'] {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      overflow-x: auto;
+    }
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: var(--animate-marquee);
-}
-.marquee-track[data-paused='true'] {
-  animation-play-state: paused;
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    overflow-x: auto;
   }
 }
