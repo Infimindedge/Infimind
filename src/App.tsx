@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { PageLoading } from '@/components/ui/PageLoading';
 
@@ -20,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/programs/sat" element={<Navigate to="/navichi" replace />} />
           <Route path="/navichi" element={<NavichiPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

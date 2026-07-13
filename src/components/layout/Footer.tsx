@@ -29,7 +29,7 @@ const columns: FooterColumn[] = [
     title: 'Programs',
     links: [
       { label: 'School Program', href: '/programs/school' },
-      { label: 'SAT Program', href: '/programs/sat' },
+      { label: 'SAT Program', href: '/navichi' },
     ],
   },
   {
