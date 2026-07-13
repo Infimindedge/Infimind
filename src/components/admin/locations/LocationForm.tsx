@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import type { LocationItem } from '@/types/content';
@@ -23,7 +23,7 @@ export function LocationForm({ initial, onSubmit, onCancel }: LocationFormProps)
     register,
     handleSubmit,
     setValue,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<LocationFormValues>({
     resolver: zodResolver(locationSchema),
@@ -41,7 +41,7 @@ export function LocationForm({ initial, onSubmit, onCancel }: LocationFormProps)
     },
   });
 
-  const isoCode = watch('isoCode');
+  const isoCode = useWatch({ control, name: 'isoCode' });
 
   async function handleFlagChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];

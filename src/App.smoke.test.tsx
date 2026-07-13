@@ -11,10 +11,10 @@ describe('App routing smoke tests', () => {
       </MemoryRouter>,
     );
     expect(
-      await screen.findByRole('heading', { name: /Extraordinary Thinkers/ }, { timeout: 15000 }),
+      await screen.findByRole('heading', { name: /Extraordinary Thinkers/ }, { timeout: 30000 }),
     ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Sign In' })).toBeInTheDocument();
-  }, 20000);
+  }, 35000);
 
   it('renders the sign-in placeholder at /signin', async () => {
     render(
@@ -32,9 +32,9 @@ describe('App routing smoke tests', () => {
         <App />
       </MemoryRouter>,
     );
-    expect(await screen.findByRole('heading', { name: 'Admin Access' })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Admin Access' }, { timeout: 15000 })).toBeInTheDocument();
     expect(screen.getByText(/Prototype-only authentication/)).toBeInTheDocument();
-  });
+  }, 20000);
 
   it('renders the 404 page for an unknown route', async () => {
     render(

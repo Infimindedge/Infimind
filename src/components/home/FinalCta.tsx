@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Photo } from '@/components/ui/Photo';
-import { useConsultationModal } from '@/context/ConsultationModalContext';
+import { useConsultationModal } from '@/hooks/useConsultationModal';
 
 /** Natural ratio of consultation-lounge.jpg — the photo column is sized to this exactly so it never gets cropped. */
 const LOUNGE_PHOTO_RATIO = '1976/717';

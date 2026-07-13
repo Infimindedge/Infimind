@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform, type Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Photo } from '@/components/ui/Photo';
-import { useConsultationModal } from '@/context/ConsultationModalContext';
+import { useConsultationModal } from '@/hooks/useConsultationModal';
 
 const PARALLAX_RANGE = 8;
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];

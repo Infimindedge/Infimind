@@ -6,6 +6,7 @@ import { PageLoading } from '@/components/ui/PageLoading';
 const Home = lazy(() => import('@/pages/Home'));
 const SignIn = lazy(() => import('@/pages/SignIn'));
 const Admin = lazy(() => import('@/pages/Admin'));
+const NavichiPage = lazy(() => import('@/pages/NavichiPage'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/navichi" element={<NavichiPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -19,7 +19,7 @@ export const navItems: NavItem[] = [
     label: 'Programs',
     dropdown: [
       { label: 'School Program', href: '/programs/school' },
-      { label: 'SAT Program', href: '/programs/sat' },
+      { label: 'SAT Program', href: '/navichi' },
     ],
   },
   { label: 'Our Philosophy', href: '/philosophy' },

@@ -8,6 +8,7 @@ import { LocationForm } from './LocationForm';
 import type { LocationFormValues } from './locationSchema';
 import { AdminModal } from '@/components/admin/AdminModal';
 import { ConfirmDialog } from '@/components/admin/ConfirmDialog';
+import { getMapPositionForLocation } from '@/lib/countryMapPosition';
 
 const DEFAULT_MAP_POSITION = { x: 50, y: 50 };
 
@@ -28,8 +29,10 @@ export function LocationsAdmin() {
   }
 
   function handleSubmit(values: LocationFormValues) {
+    const mapPosition = getMapPositionForLocation(values.isoCode, values.country, editing?.mapPosition ?? DEFAULT_MAP_POSITION);
     const payload = {
       ...values,
+      mapPosition,
       program: values.program || undefined,
       flagImageUrl: values.flagImageUrl || undefined,
       quote: values.quote || undefined,
@@ -39,7 +42,7 @@ export function LocationsAdmin() {
     if (editing) {
       locationRepository.update(editing.id, payload);
     } else {
-      locationRepository.create({ id: crypto.randomUUID(), mapPosition: DEFAULT_MAP_POSITION, ...payload });
+      locationRepository.create({ id: crypto.randomUUID(), ...payload });
     }
     setFormOpen(false);
     setEditing(null);
@@ -76,8 +79,8 @@ export function LocationsAdmin() {
       <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-border bg-paper-soft p-3.5 text-xs text-ink-soft">
         <Info size={16} className="mt-0.5 shrink-0 text-gold-dark" aria-hidden="true" />
         <p>
-          New locations are placed at a default position on the world map. A dedicated map-position picker is
-          planned for a later phase.
+          New locations are placed on the world map from the ISO country code. Use the correct two-letter code for
+          the country you want to highlight.
         </p>
       </div>
 

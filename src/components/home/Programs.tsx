@@ -18,7 +18,7 @@ const IMAGE_RATIOS: Record<ProgramId, string> = {
 
 const LINKS: Record<ProgramId, string> = {
   school: '/programs/school',
-  sat: '/programs/sat',
+  sat: '/navichi',
 };
 
 export function Programs() {

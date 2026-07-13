@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Clock, CheckCircle2 } from 'lucide-react';
 import { consultationSchema, type ConsultationFormValues } from './consultationSchema';
@@ -20,7 +20,7 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<ConsultationFormValues>({
     resolver: zodResolver(consultationSchema),
@@ -35,7 +35,7 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
     },
   });
 
-  const selectedCountry = watch('country');
+  const selectedCountry = useWatch({ control, name: 'country' });
 
   function onSubmit(values: ConsultationFormValues) {
     enquiryRepository.create({
