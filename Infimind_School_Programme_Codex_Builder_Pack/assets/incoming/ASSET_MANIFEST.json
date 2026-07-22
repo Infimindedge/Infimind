@@ -1,0 +1,46 @@
+{
+  "expectedAssets": [
+    {
+      "filename": "school-programme-hero.jpg",
+      "destination": "public/assets/school-programme/",
+      "use": "Hero right panel",
+      "notes": "Real editorial photography, student learning in natural light, no logos or visible school brands."
+    },
+    {
+      "filename": "discover-programme.jpg",
+      "destination": "public/assets/school-programme/",
+      "use": "Discover programme panel",
+      "notes": "Younger learner, warm safe setting, natural expression."
+    },
+    {
+      "filename": "explorer-programme.jpg",
+      "destination": "public/assets/school-programme/",
+      "use": "Explorer programme panel",
+      "notes": "Upper-primary learner engaged in study or project work."
+    },
+    {
+      "filename": "pathfinder-programme.jpg",
+      "destination": "public/assets/school-programme/",
+      "use": "Pathfinder programme panel",
+      "notes": "Middle-school learner doing analytical or subject work."
+    },
+    {
+      "filename": "scholar-programme.jpg",
+      "destination": "public/assets/school-programme/",
+      "use": "Scholar programme panel",
+      "notes": "High-school learner in focused preparation."
+    },
+    {
+      "filename": "subject-explorer.jpg",
+      "destination": "public/assets/school-programme/",
+      "use": "Subject explorer supporting image",
+      "notes": "Mentor and student or subject-focused editorial scene."
+    },
+    {
+      "filename": "school-dashboard.png",
+      "destination": "public/assets/school-programme/",
+      "use": "Student learning dashboard section",
+      "notes": "Optional supplied dashboard image; otherwise build a crisp React UI mockup."
+    }
+  ]
+}

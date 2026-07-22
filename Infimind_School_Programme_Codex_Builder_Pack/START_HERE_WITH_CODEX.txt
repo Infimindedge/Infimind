@@ -1,0 +1,11 @@
+Extract this ZIP inside or beside `C:\Users\aasti\Desktop\Final Website`.
+
+Read `CODEX_MASTER_PROMPT.md` completely before editing. Then inspect the existing project and provide:
+
+1. Every new file you intend to create.
+2. Every existing file you intend to modify.
+3. Why each modification is necessary.
+
+Do not begin implementation until I approve the file-change plan.
+
+Build only the flagship School Programme page described in the pack. Do not redesign, refactor or modify any unrelated page, component, route, global style, header, footer, admin module or existing behaviour. The locked reference image is the visual source of truth, and `content/school-programme-content.json` is the approved content source.

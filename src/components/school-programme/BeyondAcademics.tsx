@@ -1,0 +1,4 @@
+import { Lightbulb } from 'lucide-react';
+import { Container } from '@/components/ui/Container';
+import { schoolProgramme } from '@/data/schoolProgramme';
+export function BeyondAcademics() { return <section className="school-section school-section--soft" aria-labelledby="beyond-title"><Container width="max"><div className="school-section-heading"><p className="eyebrow">Skills for learning and life</p><h2 id="beyond-title">Beyond Academics</h2></div><div className="school-bento">{schoolProgramme.beyondAcademics.map((item, index) => <article key={item} className={index === 0 || index === 7 ? 'school-bento__wide' : ''}><Lightbulb aria-hidden="true" /><h3>{item}</h3><p>Developed through guided practice, reflection and meaningful application.</p></article>)}</div></Container></section>; }

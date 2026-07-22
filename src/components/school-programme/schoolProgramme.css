@@ -1,0 +1,110 @@
+.school-programme { background:#fcfbf8; color:#071a3d; }
+.school-programme section[id] { scroll-margin-top:90px; }
+.school-hero { background:linear-gradient(120deg,#fcfbf8 0%,#fff 58%,#f4eee5 100%); border-bottom:1px solid #e7e2da; }
+.school-hero__grid { display:grid; grid-template-columns:1.04fr .96fr; align-items:center; min-height:620px; padding-top:48px; }
+.school-hero__copy { padding:38px 0 58px; max-width:660px; }
+.school-hero h1 { margin-top:12px; font-size:clamp(3.3rem,5.4vw,5.8rem); line-height:.88; letter-spacing:-.035em; }
+.school-hero h1 span,.school-hero h1 em { display:block; }
+.school-hero h1 em { margin-top:14px; color:#a96d2e; font-weight:500; }
+.school-lead { margin-top:28px; max-width:590px; color:#4e5968; font-size:1.08rem; line-height:1.75; }
+.school-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.school-button { display:inline-flex; min-height:46px; align-items:center; justify-content:center; gap:10px; border-radius:7px; padding:12px 22px; font-size:.9rem; font-weight:650; transition:.2s ease; }
+.school-button svg { width:17px; }
+.school-button--gold { border:1px solid #c78b45; background:#c78b45; color:#fff; }
+.school-button--gold:hover { background:#a96d2e; transform:translateY(-2px); }
+.school-button--outline { border:1px solid #d7d0c5; background:#fff; color:#071a3d; }
+.school-hero__visual { align-self:stretch; min-height:550px; overflow:hidden; border-radius:0 0 0 34px; }
+.school-hero__visual img { width:100%; height:100%; object-fit:cover; }
+.school-programme-image-placeholder { display:flex; min-height:220px; height:100%; align-items:center; justify-content:center; flex-direction:column; gap:8px; background:linear-gradient(135deg,#f6f3ed,#efe7da); color:#7a8491; }
+.school-proof { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; padding:18px 0; }
+.school-proof li { display:flex; align-items:center; justify-content:center; gap:8px; font-size:.76rem; font-weight:650; }
+.school-proof svg { width:17px; color:#c78b45; }
+.school-section { padding:96px 0; }
+.school-section--soft { background:#f6f3ed; }
+.school-section--science { background:#fff; }
+.school-section-heading { margin:0 auto 42px; max-width:780px; text-align:center; }
+.school-section-heading .eyebrow,.school-science .eyebrow,.school-personalisation .eyebrow { color:#c78b45; }
+.school-section-heading h2,.school-science h2,.school-personalisation h2 { margin-top:8px; font-size:clamp(2.35rem,3.8vw,3.8rem); line-height:1; }
+.school-section-heading>p:last-child { margin-top:14px; color:#4e5968; line-height:1.7; }
+.school-section-heading--row { max-width:none; display:flex; align-items:end; justify-content:space-between; gap:28px; text-align:left; }
+.school-section-heading label,.school-comparison-select { display:flex; min-width:220px; flex-direction:column; gap:6px; color:#4e5968; font-size:.75rem; font-weight:650; }
+.school-section-heading select,.school-comparison-select select { min-height:44px; border:1px solid #d7d0c5; border-radius:7px; background:#fff; padding:9px 12px; color:#071a3d; }
+.school-journey { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.school-journey button { min-height:220px; border:1px solid #e7e2da; border-radius:16px; background:#fff; padding:28px 22px; text-align:left; transition:.25s ease; }
+.school-journey button:hover,.school-journey button.is-active { border-color:#c78b45; background:#fffaf3; transform:translateY(-3px); box-shadow:0 12px 36px rgba(7,26,61,.06); }
+.school-journey svg { color:#c78b45; }
+.school-journey span { display:block; margin-top:18px; font-family:var(--font-display); font-size:1.65rem; font-weight:650; }
+.school-journey small { color:#a96d2e; font-weight:650; }
+.school-journey p { margin-top:12px; color:#4e5968; font-size:.88rem; line-height:1.55; }
+.school-subject-layout { display:grid; grid-template-columns:190px minmax(0,1fr) 230px; gap:20px; align-items:start; }
+.school-subject-tabs { display:flex; flex-direction:column; gap:7px; }
+.school-subject-tabs button { min-height:44px; border-radius:7px; padding:10px 14px; background:#f6f3ed; text-align:left; font-size:.82rem; font-weight:600; }
+.school-subject-tabs button.is-active { background:#071a3d; color:white; }
+.school-subject-card { min-height:520px; border:1px solid #e7e2da; border-radius:16px; background:#fff; padding:28px; box-shadow:0 12px 36px rgba(7,26,61,.05); }
+.school-subject-card>header { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid #e7e2da; padding-bottom:20px; }
+.school-subject-card header p { color:#c78b45; font-size:.75rem; font-weight:700; }
+.school-subject-card header h3 { font-size:2rem; }
+.school-subject-card header span { color:#4e5968; font-size:.86rem; }
+.school-subject-card header svg { color:#c78b45; }
+.school-subject-columns { display:grid; grid-template-columns:1fr 1.1fr 1fr; gap:24px; padding-top:24px; }
+.school-subject-columns h4,.school-principle-panel h4 { margin-bottom:12px; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; }
+.school-subject-columns li { display:flex; gap:7px; margin:7px 0; color:#4e5968; font-size:.78rem; }
+.school-subject-columns li svg { width:13px; flex:none; color:#c78b45; }
+.school-subject-columns p { color:#4e5968; font-size:.8rem; line-height:1.6; }
+.school-subject-columns img,.school-subject-columns .school-programme-image-placeholder { margin-top:18px; height:150px; width:100%; border-radius:10px; object-fit:cover; }
+.school-statement { min-height:520px; border-radius:16px; background:#071a3d; padding:32px 24px; color:#fff; }
+.school-statement h3 { margin:30px 0; color:#fff; font-size:2rem; line-height:1.05; }
+.school-statement>p:last-child { color:#dbe4f4; font-size:.9rem; line-height:1.7; }
+.school-curricula { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+.school-curriculum-card { border:1px solid #e7e2da; border-radius:14px; background:#fff; overflow:hidden; }
+.school-curriculum-card button { display:flex; width:100%; min-height:112px; align-items:center; justify-content:space-between; padding:20px; text-align:left; }
+.school-curriculum-card button>span { display:grid; grid-template-columns:34px 1fr; align-items:center; column-gap:10px; }
+.school-curriculum-card button>span svg { grid-row:1/3; color:#c78b45; }
+.school-curriculum-card strong { font-family:var(--font-display); font-size:1.35rem; }
+.school-curriculum-card small { color:#7a8491; }
+.school-curriculum-card>div { border-top:1px solid #e7e2da; padding:18px 20px; color:#4e5968; font-size:.82rem; line-height:1.6; }
+.school-curriculum-card>div p+p { margin-top:10px; }
+.school-science { background:#071a3d; padding:104px 0; color:#fff; }
+.school-science__intro { max-width:760px; }
+.school-science h2,.school-science h3 { color:#fff; }
+.school-science__intro>p:not(.eyebrow) { margin:18px 0 30px; color:#d6deeb; line-height:1.7; }
+.school-science h3 { font-size:2rem; }
+.school-realise { display:grid; grid-template-columns:repeat(7,1fr); margin-top:42px; }
+.school-realise button { min-height:120px; border-top:1px solid #51617c; color:#d6deeb; position:relative; }
+.school-realise button:before { content:''; position:absolute; top:-6px; left:50%; width:11px; height:11px; border-radius:50%; background:#51617c; }
+.school-realise button.is-active:before { background:#c78b45; box-shadow:0 0 0 6px rgba(199,139,69,.18); }
+.school-realise button span { display:block; color:#c78b45; font-family:var(--font-display); font-size:2rem; }
+.school-realise-panel { max-width:620px; border-left:2px solid #c78b45; padding:5px 0 5px 22px; }
+.school-realise-panel strong { font-family:var(--font-display); font-size:1.55rem; }
+.school-realise-panel p { margin-top:6px; color:#d6deeb; }
+.school-principles { display:grid; grid-template-columns:320px 1fr; gap:24px; }
+.school-principle-list { display:grid; gap:5px; }
+.school-principle-list button { min-height:42px; padding:9px 14px; border-left:2px solid transparent; text-align:left; color:#4e5968; font-size:.84rem; }
+.school-principle-list button.is-active { border-color:#c78b45; background:#f6f3ed; color:#071a3d; font-weight:650; }
+.school-principle-panel { min-height:470px; border:1px solid #e7e2da; border-radius:16px; padding:36px; box-shadow:0 12px 36px rgba(7,26,61,.05); }
+.school-principle-panel h3 { margin:8px 0 26px; font-size:2.2rem; }
+.school-principle-panel>div { margin:20px 0; }
+.school-principle-panel p { color:#4e5968; line-height:1.65; }
+.school-principle-panel nav { display:flex; align-items:center; gap:12px; margin-top:28px; }
+.school-principle-panel nav button { display:grid; width:44px; height:44px; place-items:center; border:1px solid #e7e2da; border-radius:50%; }
+.school-disclaimer { margin:28px auto 0; max-width:850px; color:#7a8491; font-size:.78rem; line-height:1.6; text-align:center; }
+.school-approach { background:#0c2754; padding:92px 0; color:#fff; }
+.school-section-heading--light h2 { color:#fff; }.school-section-heading--light p:last-child{color:#dbe4f4}
+.school-process { display:grid; grid-template-columns:repeat(5,1fr); gap:20px; }
+.school-process article { position:relative; text-align:center; }.school-process article:not(:last-child):after{content:'→';position:absolute;right:-14px;top:25px;color:#c78b45}
+.school-process article span { display:grid; width:58px; height:58px; place-items:center; margin:auto; border:1px solid #c78b45; border-radius:50%; color:#c78b45; }
+.school-process h3 { margin:16px 0 8px; color:#fff; font-size:1.4rem; }.school-process p{color:#cbd6e8;font-size:.82rem;line-height:1.55}
+.school-team__roles { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }.school-team__roles button{min-height:120px;border:1px solid #e7e2da;border-radius:14px;background:#fff;padding:16px}.school-team__roles button.is-active{border-color:#c78b45;background:#fffaf3}.school-team__roles svg{margin:auto;color:#c78b45}.school-team__roles span{display:block;margin-top:12px;font-weight:650}.school-team__panel{max-width:700px;margin:24px auto 0;border-radius:14px;background:#071a3d;padding:26px;text-align:center}.school-team__panel span{color:#c78b45;font-size:.74rem;text-transform:uppercase;letter-spacing:.12em}.school-team__panel h3{color:#fff;font-size:1.8rem}.school-team__panel p{margin-top:8px;color:#dbe4f4}
+.school-bento { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }.school-bento article{min-height:155px;border:1px solid #e7e2da;border-radius:14px;background:#fff;padding:22px}.school-bento__wide{grid-column:span 2}.school-bento svg{color:#c78b45}.school-bento h3{margin-top:16px;font-size:1.35rem}.school-bento p{margin-top:7px;color:#4e5968;font-size:.78rem;line-height:1.5}
+.school-cycle { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; }.school-cycle article{position:relative;border-top:2px solid #c78b45;padding:22px 18px}.school-cycle article>span{color:#c78b45;font-weight:750}.school-cycle h3{margin:10px 0 8px;font-size:1.35rem}.school-cycle p{color:#4e5968;font-size:.78rem;line-height:1.5}.school-cycle article>svg{position:absolute;right:-10px;top:22px;width:18px;color:#c78b45}
+.school-assessment,.school-parent,.school-split { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:60px; }.school-assessment h2,.school-parent h2,.school-split h2{margin:8px 0 18px;font-size:clamp(2.3rem,3.7vw,3.7rem);line-height:1}.school-assessment>div>p:not(.eyebrow){color:#4e5968;line-height:1.65}.school-assessment ul,.school-parent ul{margin-top:20px}.school-assessment li,.school-parent li{display:flex;gap:8px;margin:9px 0;color:#4e5968}.school-assessment li svg,.school-parent li svg{width:16px;color:#c78b45;flex:none}.school-assessment aside{border:1px solid #e7e2da;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff}.school-assessment aside h3{font-size:2rem}.school-assessment aside div{display:flex;max-width:360px;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}.school-assessment aside span{border-radius:20px;background:#f2e5d3;padding:7px 11px;font-size:.75rem}
+.school-dashboard{border:1px solid #d7d0c5;border-radius:18px;background:#071a3d;padding:18px;box-shadow:0 18px 48px rgba(7,26,61,.14)}.school-dashboard header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #415273;padding:8px 8px 18px;color:#fff}.school-dashboard header span,.school-dashboard header strong{display:block}.school-dashboard header span{color:#c78b45;font-size:.7rem;text-transform:uppercase}.school-dashboard>div{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}.school-dashboard article{display:grid;grid-template-columns:25px 1fr;border-radius:10px;background:#fff;padding:14px}.school-dashboard article svg{grid-row:1/3;width:17px;color:#c78b45}.school-dashboard article span{font-size:.75rem;color:#7a8491}.school-dashboard article strong{font-size:.88rem}
+.school-parent-preview{border:1px solid #e7e2da;border-radius:22px;background:#fff;padding:22px;box-shadow:0 12px 36px rgba(7,26,61,.06)}.school-parent-preview header{display:flex;align-items:center;gap:10px;border-bottom:1px solid #e7e2da;padding-bottom:16px;font-weight:700}.school-parent-preview header svg{color:#c78b45}.school-parent-preview>div{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid #eee;padding:17px 0}.school-parent-preview small{color:#7a8491}.school-parent-preview span{font-size:.85rem}
+.school-comparison-select{display:none}.school-comparison-table{overflow:auto;border:1px solid #e7e2da;border-radius:14px}.school-comparison-table table{width:100%;min-width:1050px;border-collapse:collapse;background:#fff}.school-comparison-table th,.school-comparison-table td{border-right:1px solid #e7e2da;border-bottom:1px solid #e7e2da;padding:16px;text-align:left;font-size:.78rem;line-height:1.5}.school-comparison-table th{background:#f6f3ed}.school-comparison-table thead th{font-family:var(--font-display);font-size:1.15rem}.school-comparison-table th:first-child{position:sticky;left:0;z-index:1}.school-comparison-table small{display:block;color:#7a8491}.school-comparison-table .is-active{background:#fff8ee;box-shadow:inset 2px 0 #c78b45}.school-comparison-mobile{display:none}
+.school-personalisation { padding:88px 0; background:#f2e5d3; }.school-personalisation>div>div{max-width:900px;margin:auto;text-align:center}.school-personalisation p:not(.eyebrow){margin:18px auto 0;max-width:740px;color:#4e5968;font-size:1.08rem;line-height:1.7}.school-personalisation ul{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}.school-personalisation li{display:flex;align-items:center;gap:8px;border-radius:30px;background:#fff;padding:11px 16px;font-size:.85rem}.school-personalisation li svg{width:17px;color:#2e7d62}
+.school-faq{border-top:1px solid #d7d0c5}.school-faq__item{border-bottom:1px solid #d7d0c5}.school-faq__item button{display:flex;width:100%;min-height:62px;align-items:center;justify-content:space-between;gap:20px;text-align:left;font-weight:650}.school-faq__item button[aria-expanded=true] svg{transform:rotate(180deg)}.school-faq__item>div{padding:0 40px 22px 0;color:#4e5968;line-height:1.65}
+.school-final-cta{background:#071a3d;padding:72px 0}.school-final-cta>div{display:flex;align-items:center;justify-content:space-between;gap:40px}.school-final-cta h2{color:#fff;font-size:clamp(2.2rem,4vw,3.8rem)}.school-final-cta p{margin-top:8px;color:#dbe4f4}.school-final-cta .school-button{flex:none}
+@media(max-width:1024px){.school-hero__grid{grid-template-columns:1fr 1fr}.school-proof{grid-template-columns:repeat(3,1fr)}.school-subject-layout{grid-template-columns:170px 1fr}.school-statement{grid-column:1/-1;min-height:auto}.school-curricula{grid-template-columns:repeat(2,1fr)}.school-realise{grid-template-columns:repeat(4,1fr)}.school-process,.school-team__roles{grid-template-columns:repeat(3,1fr)}.school-bento{grid-template-columns:repeat(3,1fr)}.school-cycle{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.school-hero__grid{display:block;padding:0}.school-hero__copy{padding:58px 24px}.school-hero__visual{min-height:390px;border-radius:0}.school-proof{grid-template-columns:1fr 1fr;padding:18px 0}.school-proof li{justify-content:flex-start}.school-section{padding:72px 0}.school-section-heading--row{display:block}.school-section-heading label{margin-top:24px}.school-journey{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px}.school-journey button{min-width:260px;scroll-snap-align:start}.school-subject-layout{display:block}.school-subject-tabs{flex-direction:row;overflow-x:auto;margin-bottom:16px}.school-subject-tabs button{min-width:max-content}.school-subject-columns{grid-template-columns:1fr}.school-subject-card{min-height:0}.school-statement{margin-top:16px}.school-realise{display:block;border-left:1px solid #51617c}.school-realise button{display:flex;width:100%;min-height:64px;align-items:center;gap:12px;border-top:0;text-align:left}.school-realise button:before{top:27px;left:-6px}.school-realise button span{width:35px}.school-principles{grid-template-columns:1fr}.school-principle-list{display:flex;overflow-x:auto}.school-principle-list button{min-width:190px}.school-process,.school-team__roles{grid-template-columns:1fr 1fr}.school-process article:not(:last-child):after{display:none}.school-bento{grid-template-columns:1fr 1fr}.school-bento__wide{grid-column:span 1}.school-cycle{grid-template-columns:1fr 1fr}.school-cycle article>svg{display:none}.school-assessment,.school-parent,.school-split{grid-template-columns:1fr;gap:32px}.school-assessment aside{border-radius:18px;aspect-ratio:auto;padding:50px 20px}.school-comparison-table{display:none}.school-comparison-select,.school-comparison-mobile{display:flex}.school-comparison-select{margin-bottom:18px}.school-comparison-mobile{flex-direction:column;border:1px solid #e7e2da;border-radius:14px;background:#fff;padding:22px}.school-comparison-mobile h3{font-size:2rem}.school-comparison-mobile div{display:grid;grid-template-columns:120px 1fr;gap:12px;border-top:1px solid #e7e2da;padding:13px 0;font-size:.78rem}.school-final-cta>div{display:block}.school-final-cta .school-button{margin-top:24px}}
+@media(max-width:430px){.school-hero h1{font-size:3.25rem}.school-proof{grid-template-columns:1fr}.school-curricula,.school-process,.school-team__roles,.school-bento,.school-cycle{grid-template-columns:1fr}.school-subject-card{padding:20px}.school-principle-panel{padding:24px}.school-dashboard>div{grid-template-columns:1fr}.school-parent-preview>div{display:block}.school-parent-preview span{display:block;margin-top:5px}.school-comparison-mobile div{grid-template-columns:1fr}.school-final-cta{padding:58px 0}}
+@media(prefers-reduced-motion:reduce){.school-programme *{scroll-behavior:auto!important}.school-journey button:hover,.school-button:hover{transform:none}}

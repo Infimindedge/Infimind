@@ -7,9 +7,21 @@ import { TestimonialsAdmin } from './testimonials/TestimonialsAdmin';
 import { LocationsAdmin } from './locations/LocationsAdmin';
 import { ChallengesAdmin } from './challenges/ChallengesAdmin';
 import { EnquiriesAdmin } from './enquiries/EnquiriesAdmin';
+import { BlogArticlesAdmin } from './blog/BlogArticlesAdmin';
+import { BlogCategoriesAdmin } from './blog/BlogCategoriesAdmin';
+import { BlogAuthorsAdmin } from './blog/BlogAuthorsAdmin';
+import { BlogSettingsAdmin } from './blog/BlogSettingsAdmin';
 import { cn } from '@/lib/utils';
 
-type Tab = 'testimonials' | 'locations' | 'challenges' | 'enquiries';
+type Tab =
+  | 'testimonials'
+  | 'locations'
+  | 'challenges'
+  | 'enquiries'
+  | 'blogArticles'
+  | 'blogCategories'
+  | 'blogAuthors'
+  | 'blogSettings';
 
 const SESSION_KEY = 'infimind:admin-auth';
 
@@ -18,6 +30,10 @@ const TABS: { id: Tab; label: string }[] = [
   { id: 'locations', label: 'Countries & Flags' },
   { id: 'challenges', label: 'Challenges' },
   { id: 'enquiries', label: 'Consultation Requests' },
+  { id: 'blogArticles', label: 'Blog Articles' },
+  { id: 'blogCategories', label: 'Blog Categories' },
+  { id: 'blogAuthors', label: 'Blog Authors' },
+  { id: 'blogSettings', label: 'Blog Settings' },
 ];
 
 export function AdminLayout() {
@@ -74,6 +90,10 @@ export function AdminLayout() {
         {tab === 'locations' ? <LocationsAdmin /> : null}
         {tab === 'challenges' ? <ChallengesAdmin /> : null}
         {tab === 'enquiries' ? <EnquiriesAdmin /> : null}
+        {tab === 'blogArticles' ? <BlogArticlesAdmin /> : null}
+        {tab === 'blogCategories' ? <BlogCategoriesAdmin /> : null}
+        {tab === 'blogAuthors' ? <BlogAuthorsAdmin /> : null}
+        {tab === 'blogSettings' ? <BlogSettingsAdmin /> : null}
       </Container>
     </div>
   );

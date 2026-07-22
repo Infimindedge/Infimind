@@ -1,0 +1,27 @@
+{
+  "title": "About Infimind",
+  "hero": "Thoughtful Education. Personalised For Every Learner.",
+  "intro": "Infimind believes every child learns differently. We design personalised learning journeys built around each learner through mentoring, academic guidance, wellbeing support and learning science.",
+  "sections": [
+    {
+      "heading": "Our Belief",
+      "body": "Education should adapt to the learner, not the learner to the system."
+    },
+    {
+      "heading": "Our Approach",
+      "body": "Personal Mentor, Academic Counsellor and Health & Wellbeing Counsellor work together with continuous diagnostics and reviews."
+    },
+    {
+      "heading": "Learning Science",
+      "body": "Evidence-informed methods guide every recommendation, review and learning plan."
+    },
+    {
+      "heading": "Our Promise",
+      "body": "Every student receives attention, guidance and a personalised learning experience."
+    }
+  ],
+  "cta": {
+    "label": "Explore Our Programmes",
+    "target": "/#programs"
+  }
+}

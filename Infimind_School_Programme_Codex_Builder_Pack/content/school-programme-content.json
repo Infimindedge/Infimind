@@ -1,0 +1,544 @@
+{
+  "page": {
+    "route": "/school-program",
+    "title": "Infimind School Programme",
+    "hero": {
+      "eyebrow": "SCHOOL PROGRAMME",
+      "headlineLine1": "A School Programme Built Around",
+      "headlineAccent": "One Child. Yours.",
+      "body": "Personalised academic support from Grades 1–12, combining exceptional subject educators, learning science and continuous mentoring to help every child build strong foundations, think independently and grow with confidence.",
+      "primaryCta": "Explore the Programmes",
+      "secondaryCta": "Book a Consultation",
+      "proofPoints": [
+        "Grades 1–12",
+        "Personalised Learning",
+        "Research-Informed Methods",
+        "Exceptional Subject Educators",
+        "Continuous Progress Review"
+      ]
+    },
+    "programmeBands": [
+      {
+        "id": "discover",
+        "name": "Discover",
+        "grades": "Grades 1–3",
+        "strapline": "Build curiosity, confidence and strong foundations.",
+        "focus": "Foundational literacy, numeracy, joyful learning and healthy learning habits.",
+        "subjects": {
+          "Mathematics": [
+            "Number sense and counting",
+            "Addition and subtraction",
+            "Multiplication foundations",
+            "Shapes and patterns",
+            "Time and money",
+            "Measurement",
+            "Early fractions",
+            "Everyday problem solving"
+          ],
+          "English": [
+            "Phonics and reading fluency",
+            "Vocabulary development",
+            "Grammar foundations",
+            "Sentence construction",
+            "Creative writing",
+            "Storytelling",
+            "Listening comprehension",
+            "Speaking confidence"
+          ],
+          "Science": [
+            "Living things",
+            "Plants and animals",
+            "Human body basics",
+            "Weather and seasons",
+            "Materials",
+            "Forces around us",
+            "Observation and inquiry"
+          ],
+          "Social Studies": [
+            "Family and community",
+            "Maps and directions",
+            "Countries and cultures",
+            "Environment",
+            "Festivals and traditions",
+            "Introductory geography"
+          ],
+          "Creative Development": [
+            "Art and visual expression",
+            "Story creation",
+            "Presentation confidence",
+            "Imagination and design",
+            "Music and rhythm activities"
+          ],
+          "Digital Literacy": [
+            "Safe technology habits",
+            "Basic digital navigation",
+            "Typing and presentation basics",
+            "Responsible online behaviour"
+          ]
+        },
+        "outcomes": [
+          "Strong foundational concepts",
+          "Curiosity and confidence",
+          "Reading and communication readiness",
+          "Positive study routines",
+          "Greater classroom participation"
+        ]
+      },
+      {
+        "id": "explorer",
+        "name": "Explorer",
+        "grades": "Grades 4–6",
+        "strapline": "Strengthen concepts and build independence.",
+        "focus": "Concept mastery, study habits, communication and independent thinking.",
+        "subjects": {
+          "Mathematics": [
+            "Fractions and decimals",
+            "Percentages",
+            "Ratios and proportions",
+            "Geometry",
+            "Measurement",
+            "Data handling",
+            "Introductory algebra",
+            "Logical reasoning"
+          ],
+          "English": [
+            "Reading comprehension",
+            "Grammar and language structure",
+            "Essay and paragraph writing",
+            "Literature",
+            "Vocabulary expansion",
+            "Analytical reading",
+            "Public speaking"
+          ],
+          "Science": [
+            "Biology foundations",
+            "Chemistry foundations",
+            "Physics foundations",
+            "Earth and environmental science",
+            "Scientific method",
+            "Experiments and data interpretation"
+          ],
+          "Humanities": [
+            "History",
+            "Geography",
+            "Civics",
+            "Global cultures",
+            "Environmental studies",
+            "Research and source analysis"
+          ],
+          "Creative Development": [
+            "Writing and storytelling",
+            "Presentations",
+            "Design projects",
+            "Debate foundations",
+            "Creative problem solving"
+          ],
+          "Digital Literacy": [
+            "Research skills",
+            "Digital productivity",
+            "Presentation tools",
+            "Online safety",
+            "Introductory AI awareness"
+          ]
+        },
+        "outcomes": [
+          "Deeper conceptual clarity",
+          "Stronger organisation",
+          "Independent study habits",
+          "Clear communication",
+          "Growing academic confidence"
+        ]
+      },
+      {
+        "id": "pathfinder",
+        "name": "Pathfinder",
+        "grades": "Grades 7–9",
+        "strapline": "Develop analytical thinking and academic confidence.",
+        "focus": "Advanced reasoning, subject depth, structured practice and self-management.",
+        "subjects": {
+          "Mathematics": [
+            "Algebra",
+            "Geometry",
+            "Trigonometry foundations",
+            "Statistics",
+            "Probability",
+            "Equations and inequalities",
+            "Functions",
+            "Mathematical reasoning"
+          ],
+          "English": [
+            "Literature analysis",
+            "Essay writing",
+            "Persuasive writing",
+            "Academic writing",
+            "Critical reading",
+            "Debate",
+            "Presentation skills"
+          ],
+          "Science": [
+            "Physics",
+            "Chemistry",
+            "Biology",
+            "Scientific investigation",
+            "Laboratory reasoning",
+            "Data interpretation",
+            "Application-based questions"
+          ],
+          "Humanities": [
+            "World history",
+            "Geography",
+            "Economics foundations",
+            "Political systems",
+            "Global issues",
+            "Research and evidence evaluation"
+          ],
+          "Commerce and Social Sciences": [
+            "Business foundations",
+            "Economics foundations",
+            "Psychology introduction",
+            "Financial literacy",
+            "Data-led decision making"
+          ],
+          "Digital and Research Skills": [
+            "Research methodology",
+            "Source evaluation",
+            "Digital presentations",
+            "AI literacy",
+            "Responsible technology use"
+          ]
+        },
+        "outcomes": [
+          "Analytical and critical thinking",
+          "Subject mastery",
+          "Better time management",
+          "Independent problem solving",
+          "Confident academic participation"
+        ]
+      },
+      {
+        "id": "scholar",
+        "name": "Scholar",
+        "grades": "Grades 10–12",
+        "strapline": "Build subject mastery and perform with confidence.",
+        "focus": "Advanced academics, board and school examination readiness, structured revision and independent performance.",
+        "subjects": {
+          "Mathematics": [
+            "Advanced algebra",
+            "Functions",
+            "Coordinate geometry",
+            "Trigonometry",
+            "Calculus where applicable",
+            "Statistics and probability",
+            "Advanced problem solving",
+            "Exam strategy"
+          ],
+          "English": [
+            "Advanced literature",
+            "Critical analysis",
+            "Academic essays",
+            "Research writing",
+            "Argumentation",
+            "Language and grammar",
+            "Examination writing strategy"
+          ],
+          "Sciences": [
+            "Physics",
+            "Chemistry",
+            "Biology",
+            "Environmental science where applicable",
+            "Practical and data-based analysis",
+            "Advanced examination questions"
+          ],
+          "Humanities": [
+            "History",
+            "Geography",
+            "Political science",
+            "Sociology",
+            "Psychology",
+            "Source-based analysis",
+            "Essay and evaluation skills"
+          ],
+          "Commerce": [
+            "Economics",
+            "Business studies",
+            "Accountancy where supported",
+            "Data interpretation",
+            "Case analysis",
+            "Examination strategy"
+          ],
+          "Research and Communication": [
+            "Academic research",
+            "Long-form writing",
+            "Presentation",
+            "Independent projects",
+            "Study planning",
+            "Revision systems"
+          ]
+        },
+        "outcomes": [
+          "Advanced subject mastery",
+          "Reliable examination performance",
+          "Independent revision",
+          "Clear academic writing",
+          "Confident decision making"
+        ]
+      }
+    ],
+    "curricula": [
+      {
+        "name": "International Baccalaureate",
+        "short": "IB",
+        "coverage": [
+          "PYP",
+          "MYP",
+          "Selected DP subject support"
+        ],
+        "note": "Programme support is adapted to the student's school curriculum and subject requirements."
+      },
+      {
+        "name": "Cambridge International",
+        "short": "Cambridge",
+        "coverage": [
+          "Primary",
+          "Lower Secondary",
+          "Checkpoint",
+          "IGCSE",
+          "Selected AS & A Level support"
+        ],
+        "note": "Conceptual depth, application and examination preparation are aligned to the learner's course."
+      },
+      {
+        "name": "British Curriculum",
+        "short": "British",
+        "coverage": [
+          "Key Stage 1",
+          "Key Stage 2",
+          "Key Stage 3",
+          "GCSE support"
+        ],
+        "note": "Support reflects the student's school scheme, assessment style and pace."
+      },
+      {
+        "name": "American Curriculum",
+        "short": "American",
+        "coverage": [
+          "Elementary",
+          "Middle School",
+          "High School",
+          "Selected advanced coursework"
+        ],
+        "note": "Flexible subject support is designed around school expectations and individual goals."
+      },
+      {
+        "name": "CBSE",
+        "short": "CBSE",
+        "coverage": [
+          "Primary",
+          "Middle School",
+          "Secondary",
+          "Senior Secondary selected subjects"
+        ],
+        "note": "Concept clarity, regular revision and school examination preparation."
+      },
+      {
+        "name": "ICSE / ISC",
+        "short": "ICSE",
+        "coverage": [
+          "Primary",
+          "Middle School",
+          "ICSE",
+          "Selected ISC subject support"
+        ],
+        "note": "In-depth learning, application and written-expression support."
+      }
+    ],
+    "science": {
+      "frameworkName": "REALISE™",
+      "frameworkExpansion": [
+        "Retrieve",
+        "Explain",
+        "Apply",
+        "Link",
+        "Inspect",
+        "Space",
+        "Evolve"
+      ],
+      "statement": "Infimind translates established findings from cognitive science and educational psychology into a personalised learning system for every student.",
+      "principles": [
+        {
+          "name": "Retrieval Practice",
+          "summary": "Students actively recall knowledge instead of relying on repeated rereading.",
+          "application": "Closed-book recall, cumulative questions, oral explanations and long-term retention checks."
+        },
+        {
+          "name": "Spaced Practice",
+          "summary": "Learning is revisited over carefully planned intervals.",
+          "application": "Individual revision calendars, resurfacing of older concepts and memory-health reviews."
+        },
+        {
+          "name": "Successive Relearning",
+          "summary": "Mastery requires successful recall across multiple separated sessions.",
+          "application": "Knowledge moves from encountered to understood, retrievable and durable."
+        },
+        {
+          "name": "Interleaved Practice",
+          "summary": "Related question types are mixed so students learn to select the right method.",
+          "application": "Mixed practice sets, unfamiliar questions and transfer tasks."
+        },
+        {
+          "name": "Self-Explanation",
+          "summary": "Students explain why a method works and when it should be applied.",
+          "application": "Teach-your-mentor activities, explanation journals and reasoning prompts."
+        },
+        {
+          "name": "Elaborative Questioning",
+          "summary": "Students connect facts to causes, mechanisms and prior knowledge.",
+          "application": "What, why, how, when and what-changes questioning."
+        },
+        {
+          "name": "Generation",
+          "summary": "Students attempt, predict and create before receiving complete answers.",
+          "application": "Supported prediction, partial problems and student-generated examples."
+        },
+        {
+          "name": "Worked Examples and Fading",
+          "summary": "Support is provided initially and reduced as competence grows.",
+          "application": "I Do, We Analyse, We Do, You Do, You Explain, You Transfer."
+        },
+        {
+          "name": "Dual Coding",
+          "summary": "Words and meaningful visuals reveal structure, sequence and relationships.",
+          "application": "Concept maps, diagrams, process flows, timelines and data representations."
+        },
+        {
+          "name": "Formative Feedback",
+          "summary": "Assessment guides the next learning step instead of merely producing a score.",
+          "application": "Error classification, corrective feedback and parallel questions."
+        },
+        {
+          "name": "Metacognitive Calibration",
+          "summary": "Students compare what they believe they know with what they can actually retrieve.",
+          "application": "Confidence predictions, post-task reflection and strategy adjustment."
+        },
+        {
+          "name": "Mastery-Oriented Goals",
+          "summary": "Academic ambitions are translated into specific, controllable learning behaviours.",
+          "application": "Outcome goals, learning goals and measurable process commitments."
+        }
+      ],
+      "disclaimer": "Infimind does not claim that one technique works identically for every student. We use evidence to select, combine and adapt learning strategies according to the learner, subject, goal and context."
+    },
+    "learningTeam": [
+      {
+        "role": "Personal Mentor",
+        "description": "The consistent point of guidance who understands the student's goals, habits, confidence and progress."
+      },
+      {
+        "role": "Subject Specialists",
+        "description": "Carefully selected educators with strong subject knowledge and experience explaining ideas clearly."
+      },
+      {
+        "role": "Academic Counsellor",
+        "description": "Supports planning, subject direction, goals and the wider academic journey."
+      },
+      {
+        "role": "Wellbeing Support",
+        "description": "Supports healthy study routines, confidence, motivation and emotional balance."
+      },
+      {
+        "role": "Parent Partnership",
+        "description": "Keeps families informed through meaningful progress reviews and clear next steps."
+      }
+    ],
+    "approach": [
+      {
+        "name": "Understand",
+        "description": "Identify strengths, gaps, goals, confidence and learning behaviour."
+      },
+      {
+        "name": "Plan",
+        "description": "Create a personalised roadmap with clear priorities and review intervals."
+      },
+      {
+        "name": "Learn",
+        "description": "Use guided teaching, subject expertise and meaningful representations."
+      },
+      {
+        "name": "Practise",
+        "description": "Apply retrieval, spacing, mixed questions and targeted correction."
+      },
+      {
+        "name": "Reflect",
+        "description": "Review progress, errors, confidence and the strategy for the next cycle."
+      }
+    ],
+    "beyondAcademics": [
+      "Critical Thinking",
+      "Communication",
+      "Public Speaking",
+      "Study Habits",
+      "Digital Literacy",
+      "Creativity",
+      "Leadership",
+      "Collaboration",
+      "Research Skills",
+      "Time Management",
+      "Emotional Resilience",
+      "Financial Literacy"
+    ],
+    "assessment": [
+      "Ongoing observation",
+      "Low-stakes quizzes and diagnostics",
+      "Projects and presentations",
+      "Mentor reviews",
+      "Error and retention analysis",
+      "Reflection journals",
+      "Progress against personalised goals"
+    ],
+    "parentExperience": [
+      "Clear learning updates",
+      "Structured progress reviews",
+      "Goal and intervention discussions",
+      "Visibility into strengths, barriers and next steps",
+      "A direct communication channel with the learning team"
+    ],
+    "finalCta": {
+      "headline": "Every Child Can Achieve More With the Right Support.",
+      "body": "Let us build a personalised learning journey for your child—together.",
+      "button": "Book a Consultation"
+    }
+  },
+  "guardrails": {
+    "doNotUse": [
+      "University logos",
+      "School logos",
+      "Partner institution logos unless officially approved",
+      "University-admission claims",
+      "College-placement claims",
+      "Top university statistics",
+      "10,000+ students",
+      "95% parent satisfaction",
+      "Unverified testimonials",
+      "Guaranteed results",
+      "World's best tutors as an unsupported factual claim"
+    ],
+    "preferredTutorLanguage": [
+      "Exceptional Subject Educators",
+      "Carefully Selected Educators",
+      "Experienced International-Curriculum Tutors",
+      "Highly Selective Teaching Network",
+      "Expert Subject Specialists"
+    ],
+    "replacementForBlueSalesBox": {
+      "title": "Designed Around Your Child",
+      "body": "No fixed batch. No generic worksheet path. The subject mix, pace, practice and support evolve around the learner.",
+      "items": [
+        "Individual subject plan",
+        "Flexible pace",
+        "Targeted practice",
+        "Continuous review"
+      ],
+      "noNumbers": true
+    }
+  }
+}

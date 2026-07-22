@@ -1,0 +1,4 @@
+import { Check, MessageSquareText } from 'lucide-react';
+import { Container } from '@/components/ui/Container';
+import { schoolProgramme } from '@/data/schoolProgramme';
+export function ParentExperience() { return <section className="school-section school-section--soft" aria-labelledby="parent-title"><Container width="max"><div className="school-parent"><div><p className="eyebrow">A meaningful partnership</p><h2 id="parent-title">Parent Experience</h2><ul>{schoolProgramme.parentExperience.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul></div><div className="school-parent-preview"><header><MessageSquareText aria-hidden="true" /><span>Latest Learning Update</span></header>{['Current Focus', 'Strength Observed', 'Next Step', 'Review Date'].map((item) => <div key={item}><small>{item}</small><span>{item === 'Review Date' ? 'Agreed with your learning team' : 'Shared in your next update'}</span></div>)}</div></div></Container></section>; }

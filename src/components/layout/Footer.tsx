@@ -35,16 +35,13 @@ const columns: FooterColumn[] = [
   {
     title: 'Our Philosophy',
     links: [
-      { label: 'Our Approach', href: '/philosophy/approach' },
-      { label: 'Our Values', href: '/philosophy/values' },
+      { label: 'Our Approach', href: '/philosophy' },
+      { label: 'Our Values', href: '/philosophy' },
     ],
   },
   {
     title: 'Resources',
-    links: [
-      { label: 'Blog', href: '/resources/blog' },
-      { label: 'Guides', href: '/resources/guides' },
-    ],
+    links: [{ label: 'Blogs', href: '/blog' }],
   },
   {
     title: 'Company',

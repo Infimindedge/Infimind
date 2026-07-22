@@ -26,10 +26,7 @@ export const navItems: NavItem[] = [
   { label: 'Success Stories', href: '/success-stories' },
   {
     label: 'Resources',
-    dropdown: [
-      { label: 'Blog', href: '/resources/blog' },
-      { label: 'Guides', href: '/resources/guides' },
-    ],
+    dropdown: [{ label: 'Blogs', href: '/blog' }],
   },
   { label: 'About Us', href: '/about' },
 ];

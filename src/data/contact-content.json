@@ -1,0 +1,15 @@
+{
+  "title": "Contact Us",
+  "phone": "+91 9968240372",
+  "email": "info@infimind.co.in",
+  "hero": "Let's Start the Conversation",
+  "form": [
+    "Parent / Guardian Name",
+    "Student Name (Optional)",
+    "Email",
+    "Phone",
+    "Country",
+    "Programme of Interest",
+    "Message"
+  ]
+}
