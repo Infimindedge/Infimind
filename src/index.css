@@ -598,24 +598,36 @@
   overflow: visible;
 }
 
-.navichi-flag-strip > span:not(.navichi-country-more),
-.navichi-country-more__panel > span {
-  display: grid;
-  width: 28px;
+.navichi-flag-strip > .navichi-country-chip,
+.navichi-country-more__panel > .navichi-country-chip {
+  display: inline-flex;
   height: 22px;
   flex: 0 0 auto;
-  place-items: center;
+  align-items: center;
+  gap: 5px;
   border: 1px solid var(--border-light);
   border-radius: 999px;
   background: var(--bg-pure);
+  padding: 2px 8px 2px 3px;
   color: var(--text-secondary);
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 0.67rem;
+  font-weight: 600;
+  line-height: 1;
   overflow: hidden;
+  white-space: nowrap;
 }
 
-.navichi-flag-strip img,
-.navichi-country-more__panel img {
+.navichi-country-chip__flag {
+  display: inline-flex;
+  width: 22px;
+  height: 14px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.navichi-country-chip__flag img,
+.navichi-country-chip__flag svg {
   width: 100%;
   height: 100%;
   object-fit: cover;

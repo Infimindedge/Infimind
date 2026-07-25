@@ -1,5 +1,7 @@
 import { useEffect, useId, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import flags from 'react-phone-number-input/flags';
+import type { Country } from 'react-phone-number-input';
 import {
   ArrowRight,
   BookOpenCheck,
@@ -43,9 +45,28 @@ import {
   weeklySteps,
 } from '@/data/navichi';
 import { useCollection } from '@/hooks/useCollection';
-import { isoToFlagEmoji } from '@/lib/flag';
+import type { LocationItem } from '@/types/content';
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+function CountryChip({ location }: { location: LocationItem }) {
+  const Flag = flags[location.isoCode.toUpperCase() as Country];
+
+  return (
+    <span className="navichi-country-chip" title={`${location.city}, ${location.country}`}>
+      <span className="navichi-country-chip__flag">
+        {location.flagImageUrl ? (
+          <img src={location.flagImageUrl} alt="" />
+        ) : Flag ? (
+          <Flag title={`${location.country} flag`} />
+        ) : (
+          <span aria-hidden="true">🌐</span>
+        )}
+      </span>
+      <span>{location.country}</span>
+    </span>
+  );
+}
 
 function usePageMetadata() {
   useEffect(() => {
@@ -134,8 +155,8 @@ function NavichiHero() {
   const [showAllCountries, setShowAllCountries] = useState(false);
   useCollection(locationRepository, LOCATIONS_STORAGE_KEY);
   const activeLocations = getActiveLocations();
-  const visibleLocations = activeLocations.slice(0, 7);
-  const hiddenLocations = activeLocations.slice(7);
+  const visibleLocations = activeLocations.slice(0, 4);
+  const hiddenLocations = activeLocations.slice(4);
   const copyVariants: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.09 } },
@@ -193,9 +214,7 @@ function NavichiHero() {
             </span>
             <span className="navichi-flag-strip" aria-label="Active Infimind countries">
               {visibleLocations.map((location) => (
-                <span key={location.id} title={`${location.city}, ${location.country}`}>
-                  {location.flagImageUrl ? <img src={location.flagImageUrl} alt="" /> : isoToFlagEmoji(location.isoCode)}
-                </span>
+                <CountryChip key={location.id} location={location} />
               ))}
               {hiddenLocations.length ? (
                 <span className="navichi-country-more">
@@ -212,13 +231,7 @@ function NavichiHero() {
                   {showAllCountries ? (
                     <span id="navichi-extra-countries" className="navichi-country-more__panel">
                       {hiddenLocations.map((location) => (
-                        <span key={location.id} title={`${location.city}, ${location.country}`}>
-                          {location.flagImageUrl ? (
-                            <img src={location.flagImageUrl} alt="" />
-                          ) : (
-                            isoToFlagEmoji(location.isoCode)
-                          )}
-                        </span>
+                        <CountryChip key={location.id} location={location} />
                       ))}
                     </span>
                   ) : null}
