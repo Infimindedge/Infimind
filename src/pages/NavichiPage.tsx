@@ -63,7 +63,7 @@ function CountryChip({ location }: { location: LocationItem }) {
           <span aria-hidden="true">🌐</span>
         )}
       </span>
-      <span>{location.country}</span>
+      <span className="sr-only">{location.country}</span>
     </span>
   );
 }
@@ -155,8 +155,8 @@ function NavichiHero() {
   const [showAllCountries, setShowAllCountries] = useState(false);
   useCollection(locationRepository, LOCATIONS_STORAGE_KEY);
   const activeLocations = getActiveLocations();
-  const visibleLocations = activeLocations.slice(0, 4);
-  const hiddenLocations = activeLocations.slice(4);
+  const visibleLocations = activeLocations.slice(0, 7);
+  const hiddenLocations = activeLocations.slice(7);
   const copyVariants: Variants = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.09 } },

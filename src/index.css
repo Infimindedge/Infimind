@@ -600,27 +600,22 @@
 
 .navichi-flag-strip > .navichi-country-chip,
 .navichi-country-more__panel > .navichi-country-chip {
-  display: inline-flex;
+  display: grid;
+  width: 28px;
   height: 22px;
   flex: 0 0 auto;
-  align-items: center;
-  gap: 5px;
+  place-items: center;
   border: 1px solid var(--border-light);
   border-radius: 999px;
   background: var(--bg-pure);
-  padding: 2px 8px 2px 3px;
-  color: var(--text-secondary);
-  font-size: 0.67rem;
-  font-weight: 600;
-  line-height: 1;
+  padding: 3px;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 .navichi-country-chip__flag {
   display: inline-flex;
-  width: 22px;
-  height: 14px;
+  width: 20px;
+  height: 13px;
   flex: 0 0 auto;
   overflow: hidden;
   border-radius: 2px;
