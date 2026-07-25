@@ -6,6 +6,7 @@ import PhoneInput, { type Country } from 'react-phone-number-input';
 import flags from 'react-phone-number-input/flags';
 import countryLabels from 'react-phone-number-input/locale/en';
 import { contactSchema, type ContactFormValues } from './contactSchema';
+import { CountryFlagSelect } from '@/components/ui/CountryFlagSelect';
 import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
@@ -156,6 +157,7 @@ export function ContactForm() {
               className="infimind-phone-input"
               flags={flags}
               labels={countryLabels}
+              countrySelectComponent={CountryFlagSelect}
               international
               countryCallingCodeEditable={false}
               value={field.value || undefined}

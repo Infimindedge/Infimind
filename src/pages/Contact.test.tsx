@@ -48,7 +48,8 @@ describe('Contact page', () => {
 
     await user.type(screen.getByLabelText('Parent / Guardian Name'), 'Jane Doe');
     await user.type(screen.getByLabelText('Email'), 'jane@example.com');
-    await user.selectOptions(screen.getByLabelText('Phone number country'), 'US');
+    await user.click(screen.getByRole('button', { name: 'Choose country' }));
+    await user.click(screen.getByRole('option', { name: /United States/ }));
     await user.type(screen.getByLabelText('Country and phone number'), '5555555555');
     await user.type(screen.getByLabelText('Message'), 'We would love to learn more about your programmes.');
     await user.click(screen.getByRole('button', { name: 'Send Message' }));
