@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle2 } from 'lucide-react';
+import PhoneInput, { type Country } from 'react-phone-number-input';
+import flags from 'react-phone-number-input/flags';
+import countryLabels from 'react-phone-number-input/locale/en';
 import { contactSchema, type ContactFormValues } from './contactSchema';
-import { countries } from '@/data/countries';
-import { getCountryCallingCode } from '@/data/countryCallingCodes';
 import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
@@ -25,7 +26,7 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
-    getValues,
+    control,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
@@ -41,11 +42,11 @@ export function ContactForm() {
     },
   });
 
-  function handleCountryChange(country: string) {
-    const callingCode = getCountryCallingCode(country);
-    if (callingCode && !getValues('phone').trim()) {
-      setValue('phone', `${callingCode} `, { shouldDirty: true });
-    }
+  function handleCountryChange(country?: Country) {
+    setValue('country', country ? countryLabels[country] : '', {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
   }
 
   async function onSubmit(values: ContactFormValues) {
@@ -131,46 +132,6 @@ export function ContactForm() {
           {errors.email ? <p className={errorClass}>{errors.email.message}</p> : null}
         </div>
         <div>
-          <label htmlFor="contact-country" className={labelClass}>
-            Country
-          </label>
-          <select
-            id="contact-country"
-            className={inputClass}
-            {...register('country', {
-              onChange: (event) => handleCountryChange(event.target.value),
-            })}
-            aria-invalid={Boolean(errors.country)}
-          >
-            <option value="">Select a country</option>
-            {countries.map((country) => (
-              <option key={country} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-          {errors.country ? <p className={errorClass}>{errors.country.message}</p> : null}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="contact-phone" className={labelClass}>
-            Phone
-          </label>
-          <input
-            id="contact-phone"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            placeholder="Choose country first"
-            className={inputClass}
-            {...register('phone')}
-            aria-invalid={Boolean(errors.phone)}
-          />
-          {errors.phone ? <p className={errorClass}>{errors.phone.message}</p> : null}
-        </div>
-        <div>
           <label htmlFor="contact-programme" className={labelClass}>
             Programme of Interest
           </label>
@@ -180,6 +141,34 @@ export function ContactForm() {
             <option value="sat">SAT Programme</option>
           </select>
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="contact-phone" className={labelClass}>
+          Country and phone number
+        </label>
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field }) => (
+            <PhoneInput
+              id="contact-phone"
+              className="infimind-phone-input"
+              flags={flags}
+              labels={countryLabels}
+              international
+              countryCallingCodeEditable={false}
+              value={field.value || undefined}
+              onChange={(value) => field.onChange(value ?? '')}
+              onBlur={field.onBlur}
+              onCountryChange={handleCountryChange}
+              placeholder="Select a country, then enter the number"
+              aria-invalid={Boolean(errors.phone)}
+            />
+          )}
+        />
+        {errors.country ? <p className={errorClass}>{errors.country.message}</p> : null}
+        {errors.phone ? <p className={errorClass}>{errors.phone.message}</p> : null}
       </div>
 
       <div>

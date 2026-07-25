@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useForm, useWatch } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Clock, CheckCircle2 } from 'lucide-react';
+import PhoneInput, { type Country } from 'react-phone-number-input';
+import flags from 'react-phone-number-input/flags';
+import countryLabels from 'react-phone-number-input/locale/en';
 import { consultationSchema, type ConsultationFormValues } from './consultationSchema';
-import { countries } from '@/data/countries';
-import { getCountryCallingCode } from '@/data/countryCallingCodes';
 import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
@@ -25,7 +26,6 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
     register,
     handleSubmit,
     control,
-    getValues,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<ConsultationFormValues>({
@@ -41,13 +41,11 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
     },
   });
 
-  const selectedCountry = useWatch({ control, name: 'country' });
-
-  function handleCountryChange(country: string) {
-    const callingCode = getCountryCallingCode(country);
-    if (callingCode && !getValues('whatsapp').trim()) {
-      setValue('whatsapp', `${callingCode} `, { shouldDirty: true });
-    }
+  function handleCountryChange(country?: Country) {
+    setValue('country', country ? countryLabels[country] : '', {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
   }
 
   async function onSubmit(values: ConsultationFormValues) {
@@ -125,60 +123,33 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="consult-country" className={labelClass}>
-            Country
-          </label>
-          <select
-            id="consult-country"
-            className={inputClass}
-            {...register('country', {
-              onChange: (event) => handleCountryChange(event.target.value),
-            })}
-            aria-invalid={Boolean(errors.country)}
-          >
-            <option value="">Select a country</option>
-            {countries.map((country) => (
-              <option key={country} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-          {errors.country ? <p className={errorClass}>{errors.country.message}</p> : null}
-        </div>
-        <div>
-          <label htmlFor="consult-whatsapp" className={labelClass}>
-            WhatsApp number
-          </label>
-          <input
-            id="consult-whatsapp"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            placeholder="Choose country first"
-            className={inputClass}
-            {...register('whatsapp')}
-            aria-invalid={Boolean(errors.whatsapp)}
-          />
-          {errors.whatsapp ? <p className={errorClass}>{errors.whatsapp.message}</p> : null}
-        </div>
+      <div>
+        <label htmlFor="consult-whatsapp" className={labelClass}>
+          Country and WhatsApp number
+        </label>
+        <Controller
+          name="whatsapp"
+          control={control}
+          render={({ field }) => (
+            <PhoneInput
+              id="consult-whatsapp"
+              className="infimind-phone-input"
+              flags={flags}
+              labels={countryLabels}
+              international
+              countryCallingCodeEditable={false}
+              value={field.value || undefined}
+              onChange={(value) => field.onChange(value ?? '')}
+              onBlur={field.onBlur}
+              onCountryChange={handleCountryChange}
+              placeholder="Select a country, then enter the number"
+              aria-invalid={Boolean(errors.whatsapp)}
+            />
+          )}
+        />
+        {errors.country ? <p className={errorClass}>{errors.country.message}</p> : null}
+        {errors.whatsapp ? <p className={errorClass}>{errors.whatsapp.message}</p> : null}
       </div>
-
-      {selectedCountry === 'Other' ? (
-        <div>
-          <label htmlFor="consult-country-other" className={labelClass}>
-            Please specify your country
-          </label>
-          <input
-            id="consult-country-other"
-            className={inputClass}
-            {...register('countryOther')}
-            aria-invalid={Boolean(errors.countryOther)}
-          />
-          {errors.countryOther ? <p className={errorClass}>{errors.countryOther.message}</p> : null}
-        </div>
-      ) : null}
 
       <div>
         <span className={labelClass}>Programme</span>

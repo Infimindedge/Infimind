@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'react-phone-number-input/style.css';
 
 /* ==========================================================================
    Infimind design tokens — exact values from CLAUDE_CODE_MASTER_PROMPT.md
@@ -24,6 +25,45 @@
   --warning: #b7791f;
   --shadow-soft: 0 12px 36px rgba(7, 26, 61, 0.06);
   --shadow-hover: 0 18px 48px rgba(7, 26, 61, 0.1);
+}
+
+.infimind-phone-input {
+  display: flex;
+  width: 100%;
+  min-height: 42px;
+  align-items: center;
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  background: var(--bg-pure);
+  padding: 0 14px;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.infimind-phone-input:focus-within {
+  border-color: var(--accent-blue);
+}
+
+.infimind-phone-input .PhoneInputCountry {
+  margin-right: 12px;
+}
+
+.infimind-phone-input .PhoneInputCountryFlag {
+  box-shadow: 0 0 0 1px rgba(7, 26, 61, 0.14);
+}
+
+.infimind-phone-input .PhoneInputInput {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  padding: 10px 0;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.infimind-phone-input .PhoneInputInput::placeholder {
+  color: var(--text-muted);
 }
 
 /* Map tokens into Tailwind v4's CSS-first theme so utilities (bg-gold,
