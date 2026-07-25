@@ -25,8 +25,9 @@ approved branch.
 
 ## Enquiries
 
-The public forms require a deployed Google Apps Script Web App URL. Follow
-`GOOGLE_SHEETS_SETUP.md` and complete the end-to-end Sheet test before launch.
+The public forms are connected to the deployed Google Apps Script Web App and
+write validated enquiries to the private Google Sheet. Keep the test row or
+delete it after launch verification.
 
 ## Legal review
 

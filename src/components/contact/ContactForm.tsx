@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle2 } from 'lucide-react';
 import { contactSchema, type ContactFormValues } from './contactSchema';
 import { countries } from '@/data/countries';
+import { getCountryCallingCode } from '@/data/countryCallingCodes';
 import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
@@ -24,6 +25,8 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    getValues,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -37,6 +40,13 @@ export function ContactForm() {
       message: '',
     },
   });
+
+  function handleCountryChange(country: string) {
+    const callingCode = getCountryCallingCode(country);
+    if (callingCode && !getValues('phone').trim()) {
+      setValue('phone', `${callingCode} `, { shouldDirty: true });
+    }
+  }
 
   async function onSubmit(values: ContactFormValues) {
     setSubmitError(null);
@@ -121,27 +131,17 @@ export function ContactForm() {
           {errors.email ? <p className={errorClass}>{errors.email.message}</p> : null}
         </div>
         <div>
-          <label htmlFor="contact-phone" className={labelClass}>
-            Phone
-          </label>
-          <input
-            id="contact-phone"
-            type="tel"
-            placeholder="+1 555 555 5555"
-            className={inputClass}
-            {...register('phone')}
-            aria-invalid={Boolean(errors.phone)}
-          />
-          {errors.phone ? <p className={errorClass}>{errors.phone.message}</p> : null}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
           <label htmlFor="contact-country" className={labelClass}>
             Country
           </label>
-          <select id="contact-country" className={inputClass} {...register('country')} aria-invalid={Boolean(errors.country)}>
+          <select
+            id="contact-country"
+            className={inputClass}
+            {...register('country', {
+              onChange: (event) => handleCountryChange(event.target.value),
+            })}
+            aria-invalid={Boolean(errors.country)}
+          >
             <option value="">Select a country</option>
             {countries.map((country) => (
               <option key={country} value={country}>
@@ -150,6 +150,25 @@ export function ContactForm() {
             ))}
           </select>
           {errors.country ? <p className={errorClass}>{errors.country.message}</p> : null}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="contact-phone" className={labelClass}>
+            Phone
+          </label>
+          <input
+            id="contact-phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="Choose country first"
+            className={inputClass}
+            {...register('phone')}
+            aria-invalid={Boolean(errors.phone)}
+          />
+          {errors.phone ? <p className={errorClass}>{errors.phone.message}</p> : null}
         </div>
         <div>
           <label htmlFor="contact-programme" className={labelClass}>

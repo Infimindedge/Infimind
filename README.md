@@ -92,9 +92,9 @@ Fonts: **Cormorant Garamond** (display/headings) and **Inter** (body/UI), loaded
 - The 10 real photos (`ASSET_CREDITS.md`) were supplied by the client rather than the originally-suggested licensed stock sources — confirm usage rights before public launch.
 - The Final CTA's navy content column is intentionally short (~230px at desktop) because its width/height are locked to `consultation-lounge.jpg`'s exact native aspect ratio (2.76:1) so the photo is never cropped, per the client's explicit request. Text sizing there is deliberately compact to fit.
 - The Challenges panel (`ChallengePanel.tsx`) has a fixed 440px height (matching the tab list's max-height) — any column whose content doesn't fit scrolls internally rather than growing the panel.
-- Published sample testimonials and two location story quotes are visible on the live homepage right now (client request, for design preview) — they are clearly labelled in `/admin` as `Sample preview — replace before launch` but read as ordinary testimonials to a public visitor. Replace or unpublish before launch.
-- The consultation form and WhatsApp button have no backend beyond `localStorage` — enquiries must be checked manually in `/admin` until a real notification integration exists.
+- Sample testimonials and location story quotes are not published. Add genuine family stories only after permission is confirmed.
+- The consultation and Contact forms deliver validated enquiries to the private Google Sheet. The WhatsApp button remains a direct `wa.me` contact link.
 
 ## Phase 2 notes
 
-Not built yet, intentionally: School Program page, SAT Program page, Our Philosophy pages, Success Stories page, Resources (Blog/Guides), About Us, Careers, Contact Us, Privacy Policy, Terms of Service, real `/signin` authentication, a map-position picker in the Locations admin module, real server-side admin auth, and an email/CRM integration for consultation enquiries. Routes for all of these already exist in the nav/footer and resolve to the 404 page today — add the page component and route in `src/App.tsx` when ready; no navigation restructuring should be required.
+Not built yet, intentionally: Success Stories, real `/signin` authentication, a map-position picker, real server-side admin authentication, and email/CRM notifications beyond the Google Sheet. The public School Programme, Navichi SAT Programme, Philosophy, Blog, About, Careers, Contact, Privacy Policy, and Terms of Service experiences are implemented.

@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Clock, CheckCircle2 } from 'lucide-react';
 import { consultationSchema, type ConsultationFormValues } from './consultationSchema';
 import { countries } from '@/data/countries';
+import { getCountryCallingCode } from '@/data/countryCallingCodes';
 import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
@@ -24,6 +25,8 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
     register,
     handleSubmit,
     control,
+    getValues,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ConsultationFormValues>({
     resolver: zodResolver(consultationSchema),
@@ -39,6 +42,13 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
   });
 
   const selectedCountry = useWatch({ control, name: 'country' });
+
+  function handleCountryChange(country: string) {
+    const callingCode = getCountryCallingCode(country);
+    if (callingCode && !getValues('whatsapp').trim()) {
+      setValue('whatsapp', `${callingCode} `, { shouldDirty: true });
+    }
+  }
 
   async function onSubmit(values: ConsultationFormValues) {
     setSubmitError(null);
@@ -117,27 +127,15 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="consult-whatsapp" className={labelClass}>
-            WhatsApp number
-          </label>
-          <input
-            id="consult-whatsapp"
-            type="tel"
-            placeholder="+1 555 555 5555"
-            className={inputClass}
-            {...register('whatsapp')}
-            aria-invalid={Boolean(errors.whatsapp)}
-          />
-          {errors.whatsapp ? <p className={errorClass}>{errors.whatsapp.message}</p> : null}
-        </div>
-        <div>
           <label htmlFor="consult-country" className={labelClass}>
             Country
           </label>
           <select
             id="consult-country"
             className={inputClass}
-            {...register('country')}
+            {...register('country', {
+              onChange: (event) => handleCountryChange(event.target.value),
+            })}
             aria-invalid={Boolean(errors.country)}
           >
             <option value="">Select a country</option>
@@ -148,6 +146,22 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
             ))}
           </select>
           {errors.country ? <p className={errorClass}>{errors.country.message}</p> : null}
+        </div>
+        <div>
+          <label htmlFor="consult-whatsapp" className={labelClass}>
+            WhatsApp number
+          </label>
+          <input
+            id="consult-whatsapp"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="Choose country first"
+            className={inputClass}
+            {...register('whatsapp')}
+            aria-invalid={Boolean(errors.whatsapp)}
+          />
+          {errors.whatsapp ? <p className={errorClass}>{errors.whatsapp.message}</p> : null}
         </div>
       </div>
 
