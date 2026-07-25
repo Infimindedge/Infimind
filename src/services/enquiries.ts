@@ -1,6 +1,8 @@
 import type { ProgramId } from '@/types/content';
 
-const endpoint = import.meta.env.VITE_GOOGLE_SHEETS_WEB_APP_URL;
+const productionEndpoint =
+  'https://script.google.com/macros/s/AKfycbx8Bnw8W6b9961v3jxJCIaTTv1-sd-13snJbt4PWAL-qxjiDaytWDDQK0b5PP2gKWZ0SA/exec';
+const endpoint = import.meta.env.VITE_GOOGLE_SHEETS_WEB_APP_URL || productionEndpoint;
 const webAppUrlPattern = /^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/;
 
 export interface EnquirySubmission {
