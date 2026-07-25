@@ -1,8 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import App from '@/App';
+
+vi.mock('@/services/enquiries', () => ({
+  submitEnquiry: vi.fn().mockResolvedValue(undefined),
+}));
 
 function renderContact() {
   return render(
@@ -34,7 +38,7 @@ describe('Contact page', () => {
     expect(screen.getByRole('link', { name: /info@infimind\.co\.in/ })).toHaveAttribute('href', 'mailto:info@infimind.co.in');
   }, 25000);
 
-  it('validates required fields client-side and shows a success state on valid submit, without any network request', async () => {
+  it('validates required fields and shows success after the secure service accepts the submission', async () => {
     const user = userEvent.setup();
     renderContact();
     await findContactTitle();

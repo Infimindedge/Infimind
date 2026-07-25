@@ -10,20 +10,19 @@ export interface NavItem {
 }
 
 /**
- * Centre nav structure. Programs/Resources are dropdowns; the other items
+ * Centre nav structure. Programmes/Resources are dropdowns; the other items
  * link to future Phase 2 routes (currently resolve to the 404 page) so the
  * information architecture doesn't need to change when those pages ship.
  */
 export const navItems: NavItem[] = [
   {
-    label: 'Programs',
+    label: 'Programmes',
     dropdown: [
-      { label: 'School Program', href: '/programs/school' },
-      { label: 'SAT Program', href: '/navichi' },
+      { label: 'School Programme', href: '/programs/school' },
+      { label: 'SAT Programme', href: '/navichi' },
     ],
   },
   { label: 'Our Philosophy', href: '/philosophy' },
-  { label: 'Success Stories', href: '/success-stories' },
   {
     label: 'Resources',
     dropdown: [{ label: 'Blogs', href: '/blog' }],

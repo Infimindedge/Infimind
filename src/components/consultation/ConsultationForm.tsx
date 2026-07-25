@@ -3,8 +3,8 @@ import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Clock, CheckCircle2 } from 'lucide-react';
 import { consultationSchema, type ConsultationFormValues } from './consultationSchema';
-import { enquiryRepository } from '@/data/repositories/enquiryRepository';
 import { countries } from '@/data/countries';
+import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
   'w-full rounded-btn border border-border-strong bg-paper-pure px-3.5 py-2.5 text-sm text-ink outline-none focus-visible:border-blue';
@@ -17,6 +17,9 @@ interface ConsultationFormProps {
 
 export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [formStartedAt] = useState(() => Date.now());
+  const [website, setWebsite] = useState('');
   const {
     register,
     handleSubmit,
@@ -37,20 +40,25 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
 
   const selectedCountry = useWatch({ control, name: 'country' });
 
-  function onSubmit(values: ConsultationFormValues) {
-    enquiryRepository.create({
-      id: crypto.randomUUID(),
+  async function onSubmit(values: ConsultationFormValues) {
+    setSubmitError(null);
+    try {
+      await submitEnquiry({
       name: values.name,
       email: values.email,
-      whatsapp: values.whatsapp,
+      phone: values.whatsapp,
       country: values.country === 'Other' ? (values.countryOther?.trim() ?? 'Other') : values.country,
       program: values.program,
       message: values.message,
-      createdAt: new Date().toISOString(),
-      contacted: false,
-    });
-    setSubmitted(true);
-    onSubmitted?.();
+      source: 'consultation',
+      website,
+      formStartedAt,
+      });
+      setSubmitted(true);
+      onSubmitted?.();
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Unable to send your enquiry.');
+    }
   }
 
   if (submitted) {
@@ -67,6 +75,18 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="consult-website">Website</label>
+        <input
+          id="consult-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+        />
+      </div>
       <div className="flex items-start gap-2.5 rounded-lg border border-border bg-paper-soft p-3.5 text-xs text-ink-soft">
         <Clock size={16} className="mt-0.5 shrink-0 text-gold-dark" aria-hidden="true" />
         <p>Share a few details below and our team will reach out within 24 hours.</p>
@@ -147,15 +167,15 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
       ) : null}
 
       <div>
-        <span className={labelClass}>Program</span>
+        <span className={labelClass}>Programme</span>
         <div className="flex gap-4">
           <label className="flex items-center gap-2 text-sm text-ink">
             <input type="radio" value="school" className="h-4 w-4" {...register('program')} />
-            School Program
+            School Programme
           </label>
           <label className="flex items-center gap-2 text-sm text-ink">
             <input type="radio" value="sat" className="h-4 w-4" {...register('program')} />
-            SAT Program
+            SAT Programme
           </label>
         </div>
         {errors.program ? <p className={errorClass}>{errors.program.message}</p> : null}
@@ -183,6 +203,7 @@ export function ConsultationForm({ onSubmitted }: ConsultationFormProps) {
       >
         Request a Consultation
       </button>
+      {submitError ? <p role="alert" className={errorClass}>{submitError}</p> : null}
     </form>
   );
 }

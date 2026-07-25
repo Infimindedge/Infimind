@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle2 } from 'lucide-react';
 import { contactSchema, type ContactFormValues } from './contactSchema';
 import { countries } from '@/data/countries';
+import { submitEnquiry } from '@/services/enquiries';
 
 const inputClass =
   'w-full rounded-btn border border-border-strong bg-paper-pure px-3.5 py-2.5 text-sm text-ink outline-none focus-visible:border-blue';
@@ -17,6 +18,9 @@ const errorClass = 'mt-1 text-xs text-error';
  */
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [formStartedAt] = useState(() => Date.now());
+  const [website, setWebsite] = useState('');
   const {
     register,
     handleSubmit,
@@ -34,8 +38,25 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit() {
-    setSubmitted(true);
+  async function onSubmit(values: ContactFormValues) {
+    setSubmitError(null);
+    try {
+      await submitEnquiry({
+        name: values.parentName,
+        studentName: values.studentName,
+        email: values.email,
+        phone: values.phone,
+        country: values.country,
+        program: values.programme,
+        message: values.message,
+        source: 'contact',
+        website,
+        formStartedAt,
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Unable to send your message.');
+    }
   }
 
   if (submitted) {
@@ -52,6 +73,18 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          id="contact-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+        />
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-parent-name" className={labelClass}>
@@ -124,8 +157,8 @@ export function ContactForm() {
           </label>
           <select id="contact-programme" className={inputClass} {...register('programme')}>
             <option value="undecided">Not sure yet</option>
-            <option value="school">School Program</option>
-            <option value="sat">SAT Program</option>
+            <option value="school">School Programme</option>
+            <option value="sat">SAT Programme</option>
           </select>
         </div>
       </div>
@@ -152,6 +185,7 @@ export function ContactForm() {
       >
         Send Message
       </button>
+      {submitError ? <p role="alert" className={errorClass}>{submitError}</p> : null}
     </form>
   );
 }

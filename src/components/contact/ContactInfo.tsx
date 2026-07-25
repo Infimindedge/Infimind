@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import contactContent from '@/data/contact-content.json';
 
 const phoneHref = `tel:${contactContent.phone.replace(/\s+/g, '')}`;
@@ -32,15 +32,6 @@ export function ContactInfo() {
           <span className="mt-0.5 block text-base font-medium text-ink group-hover:text-navy">{contactContent.email}</span>
         </span>
       </a>
-
-      <div
-        role="img"
-        aria-label="Map preview placeholder"
-        className="flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-container border border-dashed border-border-strong bg-paper-soft text-ink-muted"
-      >
-        <MapPin size={26} strokeWidth={1.5} aria-hidden="true" />
-        <span className="text-xs font-medium">Map preview coming soon</span>
-      </div>
     </div>
   );
 }

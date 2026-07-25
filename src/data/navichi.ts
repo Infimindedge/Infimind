@@ -289,9 +289,9 @@ export const outcomes: TitledCopy[] = [
 
 export const faqs: FaqItem[] = [
   {
-    question: 'How is Navichi different from a standard SAT program?',
+    question: 'How is Navichi different from a standard SAT programme?',
     answer:
-      'A standard program usually follows a fixed sequence. Navichi begins with diagnosis, then adapts the plan, practice and support around how the student is actually learning and performing.',
+      'A standard programme usually follows a fixed sequence. Navichi begins with diagnosis, then adapts the plan, practice and support around how the student is actually learning and performing.',
   },
   {
     question: 'Is Navichi one-to-one?',
@@ -331,12 +331,12 @@ export const faqs: FaqItem[] = [
   {
     question: 'Can mentor support change as the student develops?',
     answer:
-      'Yes. The program is designed to evolve as the student builds competence, confidence and independence.',
+      'Yes. The programme is designed to evolve as the student builds competence, confidence and independence.',
   },
   {
     question: 'What is the learning-science basis?',
     answer:
-      'Navichi is informed by principles such as retrieval practice, spaced learning, interleaving, worked examples, metacognition, formative feedback and deliberate practice. Program structure is finalised after the initial diagnostic and consultation.',
+      'Navichi is informed by principles such as retrieval practice, spaced learning, interleaving, worked examples, metacognition, formative feedback and deliberate practice. Programme structure is finalised after the initial diagnostic and consultation.',
   },
 ];
 
@@ -349,7 +349,7 @@ export const researchNotes = [
 ];
 
 export const scientificDisclaimer =
-  "Infimind's methodology is informed by research in learning science and educational psychology. The effectiveness of individual techniques may vary according to the learner, subject, implementation and context. The program adapts these principles to each student rather than applying a single method uniformly.";
+  "Infimind's methodology is informed by research in learning science and educational psychology. The effectiveness of individual techniques may vary according to the learner, subject, implementation and context. The programme adapts these principles to each student rather than applying a single method uniformly.";
 
 export const structuredData = {
   '@context': 'https://schema.org',

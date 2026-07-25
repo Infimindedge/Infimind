@@ -5,10 +5,10 @@ export const schoolProgrammeContent = rawContent as unknown as SchoolProgrammeCo
 export const { page: schoolProgramme, guardrails: schoolProgrammeGuardrails } = schoolProgrammeContent;
 
 export const programmeImages: Record<string, string> = {
-  discover: 'discover-programme.jpg',
-  explorer: 'explorer-programme.jpg',
-  pathfinder: 'pathfinder-programme.jpg',
-  scholar: 'scholar-programme.jpg',
+  discover: 'discover.jpg',
+  explorer: 'explorer.jpg',
+  pathfinder: 'Pathfinder.jpg',
+  scholar: 'scholar.jpg',
 };
 
 export const learningCycle = [

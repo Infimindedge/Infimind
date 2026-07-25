@@ -1,8 +1,8 @@
-# Infimind — Phase 1 (Homepage + Admin)
+# Infimind Website
 
 A private-education/advisory-firm website for Infimind, built with React 19, TypeScript, Vite, Tailwind CSS v4, Framer Motion, React Router, React Hook Form, and Zod.
 
-**Phase 1 scope only:** the public homepage, a `/signin` placeholder, and a private `/admin` page for managing testimonials, countries/flags, challenges, and consultation enquiries. School Program, SAT Program, Our Philosophy, Success Stories, Resources, and About Us are **not built yet** — their nav links and footer links currently resolve to the 404 page by design, so the information architecture won't need to change when those pages are added in a later phase.
+Completed public routes include the homepage, School Programme, Navichi SAT Programme, Philosophy, Blog, About, Contact, and Careers pages. The unfinished Success Stories destination is not exposed in public navigation.
 
 > This project is under active git version control (`git log`) specifically so changes can be reviewed and rolled back. If a change doesn't look right, `git diff HEAD~1` shows exactly what changed, and `git checkout -- <file>` (or asking your assistant to revert) undoes it.
 
@@ -10,7 +10,7 @@ A private-education/advisory-firm website for Infimind, built with React 19, Typ
 
 ```bash
 npm install
-cp .env.example .env   # then set VITE_ADMIN_PASSWORD
+cp .env.example .env   # then set the deployed Google Apps Script URL
 npm run dev
 ```
 
@@ -27,11 +27,11 @@ npm run test       # Vitest (repositories, challenge tabs, admin validation, rou
 
 | Variable | Purpose |
 |---|---|
-| `VITE_ADMIN_PASSWORD` | Password gate for `/admin`. See `.env.example`. |
+| `VITE_GOOGLE_SHEETS_WEB_APP_URL` | Production Google Apps Script Web App URL used for enquiry delivery. |
 
-### ⚠️ Production auth warning
+### Admin and Sign In
 
-The `/admin` password gate (`src/components/admin/AdminAuthGate.tsx`) is a **client-side, prototype-only** check against a build-time environment variable, stored in `sessionStorage`. It is not real authentication: the password ships inside the JS bundle and anyone with dev tools can bypass it. **Do not deploy this as-is.** Before launch, replace it with real server-side auth (e.g. Supabase Auth, Firebase Auth, or a custom backend with hashed credentials and session cookies).
+The admin implementation is retained for future development, but `/admin` deliberately fails closed and cannot render protected content in the static launch. `/signin` is a non-authenticating interface that always returns the same generic invalid-credentials response. No password or administrator secret is included in the frontend bundle.
 
 ## Content & data model
 
@@ -40,19 +40,15 @@ All homepage content that a non-engineer should be able to change lives behind t
 - `testimonialRepository` — "Voices of Our Families" carousel. Managed from `/admin` → Testimonials.
 - `locationRepository` — the world map, story card, and moving city list in "Global Presence". Managed from `/admin` → Countries & Flags.
 - `challengeRepository` — the "Every Child Has a Different Challenge" tabs. Managed from `/admin` → Challenges — add, edit, reorder, or delete tabs, including their checklist items and photos.
-- `enquiryRepository` — submissions from the "Schedule a Private Consultation" form. Viewed (never edited by families) from `/admin` → Consultation Requests.
+- `enquiryRepository` — legacy local-only scaffolding retained inside the inaccessible admin implementation.
 
-**Changes made in `/admin` update the homepage immediately** in the same tab (via a custom storage-change event); other open tabs pick up the change on their next read.
+Content changes for launch should be made in source/seed files, reviewed through Git, and deployed from the approved branch.
 
-Because every repository is exposed through a small interface (`getAll`, `create`, `update`, `remove`, ...), swapping `localStorage` for Supabase/Firebase/a custom API later means rewriting the repository implementations in `src/data/repositories/`, not the components that use them.
-
-**No content is invented.** Challenge tabs without supplied content render a "content is in progress" placeholder rather than fabricated copy. Two testimonial seed records are unpublished, obviously-labelled demo scaffolding. Four more, and two location story quotes, are **published sample/preview content added at the client's explicit request** so the live carousel and map card designs could be evaluated with real-looking content — every one of them is labelled `Sample preview — replace before launch` in its admin-visible name field. Replace or unpublish these from `/admin` before the site goes live. See `CONTENT_GAPS.md` for the full list.
+**No content is invented.** Demo and sample testimonials remain unpublished, and sample location quotes have been removed from the public seed data.
 
 ## Consultation enquiries
 
-Clicking "Schedule a Private Consultation" (Hero or the closing CTA section) opens a modal form (`src/components/consultation/`) asking for name, email, WhatsApp number, country (full list + "Other"), program, and a free-text description of what the family is looking for. On submit it's saved via `enquiryRepository` and the family sees a confirmation that the team will respond within 24 hours.
-
-**These submissions go nowhere else automatically** — Phase 1 has no email/CRM backend. Check `/admin` → Consultation Requests regularly, or wire up a real notification (e.g. an email-on-submit serverless function) before launch so enquiries aren't missed.
+The consultation modal and Contact form submit to a private Google Sheet through a deployed Google Apps Script Web App. Field validation runs in both the browser and the Apps Script. See `GOOGLE_SHEETS_SETUP.md`; the forms fail visibly instead of showing a false success state when the endpoint is missing or rejects a request.
 
 ## WhatsApp
 

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
 const WHATSAPP_NUMBER = '919968240372';
-const WHATSAPP_MESSAGE = "Hi Infimind, I'd like to know more about your programs.";
+const WHATSAPP_MESSAGE = "Hi Infimind, I'd like to know more about your programmes.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 /** The official WhatsApp glyph, inline so no external icon/image request is needed. */

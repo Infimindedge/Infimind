@@ -69,7 +69,7 @@ describe('School Programme page', () => {
 
   it('uses a stable development placeholder when a supplied asset is missing', async () => {
     renderPage(); await ready();
-    const hero = screen.getByRole('img', { name: 'Student learning in a calm study setting' }); fireEvent.error(hero);
-    expect(await screen.findByText('school-programme-hero.jpg')).toBeInTheDocument();
+    const programmeImage = screen.getByRole('img', { name: 'Discover programme learner' }); fireEvent.error(programmeImage);
+    expect(await screen.findByText('discover.jpg')).toBeInTheDocument();
   }, 25000);
 });

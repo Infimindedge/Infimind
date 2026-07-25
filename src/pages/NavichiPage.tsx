@@ -176,7 +176,7 @@ function NavichiHero() {
             SAT Preparation, Engineered Around You.
           </motion.p>
           <motion.p variants={itemVariants} className="navichi-hero__body">
-            Navichi is a one-to-one, personalised SAT program built around how each student learns, thinks and
+            Navichi is a one-to-one, personalised SAT programme built around how each student learns, thinks and
             performs. We do not follow a syllabus. We build a system around the student.
           </motion.p>
           <motion.div variants={itemVariants} className="navichi-hero__actions">
@@ -251,7 +251,7 @@ function ComparisonSection() {
     <section id="traditional-vs-navichi" className="navichi-section navichi-section--tight" aria-labelledby="compare-title">
       <Container>
         <Reveal>
-          <SectionIntro title="Why Most SAT Programs Stop Too Soon" />
+          <SectionIntro title="Why Most SAT Programmes Stop Too Soon" />
         </Reveal>
         <div className="navichi-compare-stage">
           <Reveal className="navichi-compare-orbit navichi-compare-orbit--left">
@@ -289,7 +289,7 @@ function ComparisonSection() {
           </Reveal>
         </div>
         <p className="navichi-closing-line">
-          We do not place students into a program. We build the program around the student.
+          We do not place students into a programme. We build the programme around the student.
         </p>
       </Container>
     </section>

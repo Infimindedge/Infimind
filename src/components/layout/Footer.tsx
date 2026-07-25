@@ -26,10 +26,10 @@ const legalDocuments = legalContent as Record<LegalKey, LegalDocument>;
 
 const columns: FooterColumn[] = [
   {
-    title: 'Programs',
+    title: 'Programmes',
     links: [
-      { label: 'School Program', href: '/programs/school' },
-      { label: 'SAT Program', href: '/navichi' },
+      { label: 'School Programme', href: '/programs/school' },
+      { label: 'SAT Programme', href: '/navichi' },
     ],
   },
   {
@@ -75,7 +75,7 @@ export function Footer() {
               <h3 className="eyebrow mb-4 text-ink-muted">{column.title}</h3>
               <ul className="flex flex-col gap-3">
                 {column.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.label}-${link.href}`}>
                     <Link to={link.href} className="text-sm text-ink-soft transition-colors hover:text-navy">
                       {link.label}
                     </Link>

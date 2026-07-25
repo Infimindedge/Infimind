@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /signin
+
+Sitemap: https://infimind.co.in/sitemap.xml

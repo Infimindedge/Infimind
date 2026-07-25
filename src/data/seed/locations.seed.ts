@@ -20,9 +20,6 @@ export const locationsSeed: LocationItem[] = [
     active: true,
     sortOrder: 1,
     mapPosition: { x: 50, y: 21 },
-    storyLabel: 'Sample preview — replace before launch',
-    quote: 'Infimind gave our son a study routine that actually stuck — and the results followed.',
-    attribution: 'Parent, London',
   },
   {
     id: 'loc-dubai',
@@ -50,9 +47,6 @@ export const locationsSeed: LocationItem[] = [
     active: true,
     sortOrder: 4,
     mapPosition: { x: 79, y: 49 },
-    storyLabel: 'Sample preview — replace before launch',
-    quote: 'Infimind has transformed the way our daughter learns — she asks for study time now.',
-    attribution: 'Parent, Singapore',
   },
   {
     id: 'loc-zurich',

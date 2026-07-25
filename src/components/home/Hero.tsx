@@ -103,7 +103,7 @@ export function Hero() {
                 href="#programs"
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-btn border border-border-strong bg-paper/80 px-6 py-3.5 text-sm font-medium text-ink backdrop-blur-sm transition-colors hover:border-navy"
               >
-                Explore Programs
+                Explore Programmes
                 <ArrowRight size={16} aria-hidden="true" />
               </a>
             </motion.div>

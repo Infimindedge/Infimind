@@ -16,24 +16,24 @@ describe('App routing smoke tests', () => {
     expect(screen.getByRole('link', { name: 'Sign In' })).toBeInTheDocument();
   }, 35000);
 
-  it('renders the sign-in placeholder at /signin', async () => {
+  it('renders the sign-in page at /signin', async () => {
     render(
       <MemoryRouter initialEntries={['/signin']}>
         <App />
       </MemoryRouter>,
     );
-    expect(await screen.findByRole('heading', { name: 'Sign In' })).toBeInTheDocument();
-    expect(screen.getByText(/placeholder screen for Phase 1/)).toBeInTheDocument();
-  });
+    expect(await screen.findByRole('heading', { name: 'Sign In' }, { timeout: 15000 })).toBeInTheDocument();
+    expect(screen.getByText('Sign in to continue.')).toBeInTheDocument();
+  }, 20000);
 
-  it('renders the admin password gate at /admin', async () => {
+  it('renders the secure admin gate at /admin', async () => {
     render(
       <MemoryRouter initialEntries={['/admin']}>
         <App />
       </MemoryRouter>,
     );
     expect(await screen.findByRole('heading', { name: 'Admin Access' }, { timeout: 15000 })).toBeInTheDocument();
-    expect(screen.getByText(/Prototype-only authentication/)).toBeInTheDocument();
+    expect(screen.getByText(/currently unavailable/)).toBeInTheDocument();
   }, 20000);
 
   it('renders the 404 page for an unknown route', async () => {

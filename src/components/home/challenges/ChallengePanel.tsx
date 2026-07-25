@@ -63,7 +63,7 @@ export function ChallengePanel({ challenge }: ChallengePanelProps) {
             </ul>
             <div className="mt-auto flex items-center justify-center pt-5">
               <p className="text-center font-display text-lg italic leading-snug text-success">
-                Personalized. Focused. Effective.
+                Personalised. Focused. Effective.
               </p>
             </div>
           </div>

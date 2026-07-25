@@ -26,7 +26,7 @@ export function Programs() {
     <section id="programs" className="section-spacing">
       <Container width="max">
         <SectionHeading
-          title="Programs Designed Around Every Stage of Growth"
+          title="Programmes Designed Around Every Stage of Growth"
           body="Tailored learning experiences designed to meet students where they are—and help them achieve where they aspire to be."
         />
 

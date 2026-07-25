@@ -24,8 +24,7 @@ export function EnquiriesAdmin() {
       <div>
         <h2 className="font-display text-2xl text-ink">Consultation Requests</h2>
         <p className="mt-1 text-sm text-ink-soft">
-          Submissions from the "Schedule a Private Consultation" form. Mark a family as contacted once your team has
-          followed up.
+          Legacy local-only admin view retained for future development.
         </p>
       </div>
 

@@ -10,7 +10,7 @@ export const consultationSchema = z
       .regex(/^[+\d][\d\s-]*$/, 'Use digits only, optionally starting with +'),
     country: z.string().min(1, 'Country is required'),
     countryOther: z.string().optional(),
-    program: z.enum(['school', 'sat'], { message: 'Please select a program' }),
+    program: z.enum(['school', 'sat'], { message: 'Please select a programme' }),
     message: z.string().min(10, 'Tell us a little more (at least 10 characters)'),
   })
   .refine((data) => data.country !== 'Other' || Boolean(data.countryOther?.trim()), {

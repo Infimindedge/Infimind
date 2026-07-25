@@ -2,8 +2,8 @@ import { Quote } from 'lucide-react';
 import type { Testimonial } from '@/types/content';
 
 const PROGRAM_LABEL: Record<Testimonial['program'], string> = {
-  school: 'School Program',
-  sat: 'SAT Program',
+  school: 'School Programme',
+  sat: 'SAT Programme',
 };
 
 export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {

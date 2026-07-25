@@ -14,7 +14,7 @@ export function SubjectExplorer({ band, subject, onSubjectChange, onStageChange 
   return (
     <section className="school-section" aria-labelledby="subject-title">
       <Container width="max">
-        <div className="school-section-heading school-section-heading--row"><div><p className="eyebrow">Personalised subject support</p><h2 id="subject-title">Dynamic Subject Explorer</h2></div><label>Programme stage<select aria-label="Programme stage" value={band.id} onChange={(event) => onStageChange(event.target.value as ProgrammeStageId)}>{schoolProgramme.programmeBands.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.grades}</option>)}</select></label></div>
+        <div className="school-section-heading school-section-heading--row school-subject-heading"><div><p className="eyebrow">Personalised subject support</p><h2 id="subject-title">Dynamic Subject Explorer</h2></div><label>Programme stage<select aria-label="Programme stage" value={band.id} onChange={(event) => onStageChange(event.target.value as ProgrammeStageId)}>{schoolProgramme.programmeBands.map((item) => <option key={item.id} value={item.id}>{item.name} · {item.grades}</option>)}</select></label></div>
         <div className="school-subject-layout">
           <div className="school-subject-tabs" role="tablist" aria-label={`${band.name} subjects`}>{subjects.map((name) => <button key={name} type="button" role="tab" aria-selected={subject === name} className={subject === name ? 'is-active' : ''} onClick={() => onSubjectChange(name)}>{name}</button>)}</div>
           <AnimatePresence mode="wait">
@@ -23,7 +23,19 @@ export function SubjectExplorer({ band, subject, onSubjectChange, onStageChange 
               <div className="school-subject-columns"><div><h4>Topics Covered</h4><ul>{topics.map((topic) => <li key={topic}><Check aria-hidden="true" />{topic}</li>)}</ul></div><div><h4>How We Teach</h4><p>Guided explanation, meaningful examples, targeted practice and regular retrieval are adapted to the learner.</p><SchoolProgrammeImage filename={programmeImages[band.id]} alt={`${band.name} programme learner`} /></div><div><h4>Learning Outcomes</h4><ul>{band.outcomes.map((outcome) => <li key={outcome}><Check aria-hidden="true" />{outcome}</li>)}</ul></div></div>
             </motion.article>
           </AnimatePresence>
-          <aside className="school-statement"><p className="eyebrow">Every learner is different</p><h3>Every subject.<br />Every grade.<br />Every child.</h3><p>Personalised content, pace and support for maximum growth.</p></aside>
+          <aside className="school-statement">
+            <div className="school-statement__copy">
+              <p className="eyebrow">Every learner is different</p>
+              <h3>Every subject.<br />Every grade.<br />Every child.</h3>
+              <p>Personalised content, pace and support for maximum growth.</p>
+            </div>
+            <div className="school-statement__photo">
+              <SchoolProgrammeImage
+                filename="pexels-katerina-holmes-5905969.jpg"
+                alt="Student learning independently with a laptop"
+              />
+            </div>
+          </aside>
         </div>
       </Container>
     </section>

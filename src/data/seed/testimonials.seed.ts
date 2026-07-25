@@ -43,7 +43,7 @@ export const testimonialsSeed: Testimonial[] = [
     quote:
       'Our son used to dread homework. Within a few months of weekly sessions, he was explaining concepts back to us at the dinner table — that shift in confidence has been the real win.',
     sortOrder: 3,
-    published: true,
+    published: false,
   },
   {
     id: 'sample-testimonial-2',
@@ -55,7 +55,7 @@ export const testimonialsSeed: Testimonial[] = [
     quote:
       'The structure made all the difference. Every week had a clear focus, and the mentor kept us updated so we always knew where she stood before test day.',
     sortOrder: 4,
-    published: true,
+    published: false,
   },
   {
     id: 'sample-testimonial-3',
@@ -67,7 +67,7 @@ export const testimonialsSeed: Testimonial[] = [
     quote:
       "What stood out was how personal it felt. It never seemed like a generic programme — every plan was built around what our daughter actually needed.",
     sortOrder: 5,
-    published: true,
+    published: false,
   },
   {
     id: 'sample-testimonial-4',
@@ -79,6 +79,6 @@ export const testimonialsSeed: Testimonial[] = [
     quote:
       'He went into the exam calm instead of anxious for the first time. The practice and feedback loop genuinely built his confidence, not just his score.',
     sortOrder: 6,
-    published: true,
+    published: false,
   },
 ];

@@ -23,8 +23,6 @@ type Tab =
   | 'blogAuthors'
   | 'blogSettings';
 
-const SESSION_KEY = 'infimind:admin-auth';
-
 const TABS: { id: Tab; label: string }[] = [
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'locations', label: 'Countries & Flags' },
@@ -40,8 +38,7 @@ export function AdminLayout() {
   const [tab, setTab] = useState<Tab>('testimonials');
 
   function handleLogout() {
-    window.sessionStorage.removeItem(SESSION_KEY);
-    window.location.reload();
+    window.location.assign('/');
   }
 
   return (
