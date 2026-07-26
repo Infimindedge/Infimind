@@ -13,10 +13,11 @@ async function ready() {
 }
 
 describe('School Programme page', () => {
-  it('renders the route with one H1 and the unchanged header and footer', async () => {
+  it('renders the route with its dedicated section navigation and footer', async () => {
     renderPage(); await ready();
     expect(document.querySelectorAll('h1')).toHaveLength(1);
-    expect(screen.getByRole('navigation', { name: 'Primary' })).toBeInTheDocument();
+    expect(screen.getByRole('navigation', { name: 'School Programme sections' })).toBeInTheDocument();
+    expect(screen.queryByRole('navigation', { name: 'Primary' })).not.toBeInTheDocument();
     expect(screen.getByText(/Infimind. All rights reserved./)).toBeInTheDocument();
   }, 25000);
 
