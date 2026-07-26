@@ -10,14 +10,7 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <div className="flex h-full flex-col rounded-container border border-border bg-paper-pure p-6 shadow-soft sm:p-7">
       <Quote size={22} className="text-gold" aria-hidden="true" />
-      {testimonial.illustrative ? (
-        <span className="mt-3 w-fit rounded-full bg-paper-soft px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-ink-muted">
-          Illustrative theme
-        </span>
-      ) : null}
-      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-soft">
-        {testimonial.illustrative ? testimonial.quote : <>&ldquo;{testimonial.quote}&rdquo;</>}
-      </p>
+      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-soft">&ldquo;{testimonial.quote}&rdquo;</p>
       <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
         {testimonial.photoUrl ? (
           <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full">
