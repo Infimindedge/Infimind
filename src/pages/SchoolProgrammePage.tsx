@@ -23,6 +23,7 @@ import { ProgrammeComparison } from '@/components/school-programme/ProgrammeComp
 import { PersonalisationPanel } from '@/components/school-programme/PersonalisationPanel';
 import { SchoolProgrammeFaq } from '@/components/school-programme/SchoolProgrammeFaq';
 import { SchoolProgrammeCta } from '@/components/school-programme/SchoolProgrammeCta';
+import { SchoolProgrammeSectionNav } from '@/components/school-programme/SchoolProgrammeSectionNav';
 import '@/components/school-programme/schoolProgramme.css';
 
 const TITLE = 'Personalised School Programme for Grades 1–12 | Infimind';
@@ -63,7 +64,7 @@ function SchoolProgrammeContent() {
     next.set('subject', safeSubject); setParams(next, { replace: true });
   }
 
-  return <><div className="school-programme flex min-h-screen flex-col overflow-x-hidden"><Navbar /><main id="main-content" className="flex-1"><SchoolProgrammeHero /><ProgrammeJourney active={stage} onChange={update} /><SubjectExplorer band={band} subject={subject} onStageChange={update} onSubjectChange={(nextSubject) => update(stage, nextSubject)} /><CurriculumSupport /><RealiseFramework active={frameworkStep} onChange={setFrameworkStep} /><LearningScienceExplorer active={principle} onChange={setPrinciple} /><SchoolProgrammeApproach /><LearningTeam /><BeyondAcademics /><LearningCycle /><AssessmentPhilosophy /><SchoolDashboardPreview /><ParentExperience /><ProgrammeComparison active={stage} onChange={update} /><PersonalisationPanel /><SchoolProgrammeFaq /><SchoolProgrammeCta /></main><Footer /></div><WhatsAppButton /><script type="application/ld+json">{JSON.stringify(schoolProgrammeStructuredData)}</script></>;
+  return <><div className="school-programme flex min-h-screen flex-col overflow-x-hidden"><Navbar /><SchoolProgrammeSectionNav /><main id="main-content" className="flex-1"><SchoolProgrammeHero /><ProgrammeJourney active={stage} onChange={update} /><div id="subject-support"><SubjectExplorer band={band} subject={subject} onStageChange={update} onSubjectChange={(nextSubject) => update(stage, nextSubject)} /><CurriculumSupport /></div><div id="learning-science"><RealiseFramework active={frameworkStep} onChange={setFrameworkStep} /><LearningScienceExplorer active={principle} onChange={setPrinciple} /></div><div id="school-approach"><SchoolProgrammeApproach /></div><div id="learning-team"><LearningTeam /><BeyondAcademics /><LearningCycle /><AssessmentPhilosophy /><SchoolDashboardPreview /></div><div id="parent-experience"><ParentExperience /><ProgrammeComparison active={stage} onChange={update} /><PersonalisationPanel /></div><div id="school-faq"><SchoolProgrammeFaq /></div><SchoolProgrammeCta /></main><Footer /></div><WhatsAppButton /><script type="application/ld+json">{JSON.stringify(schoolProgrammeStructuredData)}</script></>;
 }
 
 export default function SchoolProgrammePage() { return <ConsultationModalProvider><SchoolProgrammeContent /></ConsultationModalProvider>; }

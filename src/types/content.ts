@@ -14,6 +14,8 @@ export interface Testimonial {
   videoUrl?: string;
   sortOrder: number;
   published: boolean;
+  /** Non-endorsement concept copy used only while verified family quotations are unavailable. */
+  illustrative?: boolean;
 }
 
 export interface LocationItem {
