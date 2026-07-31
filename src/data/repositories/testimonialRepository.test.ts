@@ -18,18 +18,13 @@ function makeTestimonial(overrides: Partial<Testimonial>): Testimonial {
 }
 
 describe('testimonialRepository', () => {
-  it('seeds demo records as unpublished, and any published seed entries are clearly labelled as samples', () => {
+  it('seeds all 20 supplied testimonials as published entries', () => {
     const seeded = testimonialRepository.getAll();
-    expect(seeded.length).toBeGreaterThan(0);
-
-    const demoRecords = seeded.filter((testimonial) => testimonial.id.startsWith('demo-'));
-    expect(demoRecords.length).toBeGreaterThan(0);
-    expect(demoRecords.every((testimonial) => testimonial.published === false)).toBe(true);
-
-    // Any published seed testimonial must be an explicitly-labelled sample —
-    // never something that reads as a genuine, unlabelled family quote.
-    const publishedSeed = seeded.filter((testimonial) => testimonial.published);
-    expect(publishedSeed.every((testimonial) => /sample/i.test(testimonial.displayName))).toBe(true);
+    expect(seeded).toHaveLength(20);
+    expect(seeded.every((testimonial) => testimonial.published)).toBe(true);
+    expect(seeded.map((testimonial) => testimonial.sortOrder)).toEqual(
+      Array.from({ length: 20 }, (_, index) => index + 1),
+    );
   });
 
   it('getPublishedTestimonials excludes drafts and is sorted by sortOrder', () => {

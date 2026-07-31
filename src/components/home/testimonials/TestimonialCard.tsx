@@ -18,15 +18,17 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           </div>
         ) : (
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-paper-soft text-sm font-medium text-ink-muted">
-            {testimonial.privacyLabel.charAt(0) || testimonial.displayName.charAt(0)}
+            {(testimonial.privacyLabel || testimonial.displayName).charAt(0)}
           </div>
         )}
         <div>
           <p className="text-sm font-medium text-ink">{testimonial.privacyLabel || testimonial.displayName}</p>
           <p className="text-xs text-ink-muted">
-            {[testimonial.city, testimonial.country].filter(Boolean).join(', ')}
-            {testimonial.city || testimonial.country ? ' · ' : ''}
-            {PROGRAM_LABEL[testimonial.program]}
+            {[
+              testimonial.roleLabel,
+              [testimonial.city, testimonial.country].filter(Boolean).join(', '),
+              PROGRAM_LABEL[testimonial.program],
+            ].filter(Boolean).join(' · ')}
           </p>
         </div>
       </div>

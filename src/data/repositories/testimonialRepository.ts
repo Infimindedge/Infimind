@@ -2,7 +2,7 @@ import type { Testimonial } from '@/types/content';
 import { testimonialsSeed } from '@/data/seed/testimonials.seed';
 import { createCollectionRepository } from './createCollectionRepository';
 
-export const TESTIMONIALS_STORAGE_KEY = 'infimind:testimonials';
+export const TESTIMONIALS_STORAGE_KEY = 'infimind:testimonials:v2';
 
 export const testimonialRepository = createCollectionRepository<Testimonial>(
   TESTIMONIALS_STORAGE_KEY,

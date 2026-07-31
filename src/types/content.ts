@@ -6,6 +6,8 @@ export interface Testimonial {
   displayName: string;
   /** Privacy-safe fallback shown publicly, e.g. "Parent, London". */
   privacyLabel: string;
+  /** Relationship, grade, or study context shown with the attribution. */
+  roleLabel?: string;
   city: string;
   country: string;
   program: ProgramId;
