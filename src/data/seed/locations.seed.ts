@@ -1,87 +1,64 @@
 import type { LocationItem } from '@/types/content';
 
 /**
- * Initial cities per the locked spec. Map positions are approximate
- * equirectangular percentages (x = longitude, y = latitude) used to place
- * pins on the abstract dot map.
- *
- * Three locations carry a sample story quote/attribution, added at the
- * client's explicit request so the map's story card could be previewed
- * with real-looking content instead of an empty state. These are NOT
- * genuine family quotes — edit or clear them from /admin before public
- * launch. See CONTENT_GAPS.md.
+ * Homepage locations paired with short, location-matched excerpts from the
+ * parent testimonials supplied for publication.
  */
 export const locationsSeed: LocationItem[] = [
   {
-    id: 'loc-london',
-    country: 'United Kingdom',
-    city: 'London',
-    isoCode: 'GB',
-    active: true,
-    sortOrder: 1,
-    mapPosition: { x: 50, y: 21 },
+    id: 'loc-london', country: 'United Kingdom', city: 'London', isoCode: 'GB',
+    active: true, sortOrder: 1, program: 'school', mapPosition: { x: 50, y: 21 },
+    storyLabel: 'Parent voice',
+    quote: 'Our daughter actually began enjoying learning again. The mentors took time to understand how she learns.',
+    attribution: 'Emily Johnson, Parent',
   },
   {
-    id: 'loc-dubai',
-    country: 'United Arab Emirates',
-    city: 'Dubai',
-    isoCode: 'AE',
-    active: true,
-    sortOrder: 2,
-    mapPosition: { x: 65, y: 36 },
+    id: 'loc-dubai', country: 'United Arab Emirates', city: 'Dubai', isoCode: 'AE',
+    active: true, sortOrder: 2, program: 'school', mapPosition: { x: 65, y: 36 },
+    storyLabel: 'Parent voice',
+    quote: 'The mentors genuinely cared, and the regular progress reports gave us complete confidence in the journey.',
+    attribution: 'Priya Mehta, Parent',
   },
   {
-    id: 'loc-toronto',
-    country: 'Canada',
-    city: 'Toronto',
-    isoCode: 'CA',
-    active: true,
-    sortOrder: 3,
-    mapPosition: { x: 28, y: 26 },
+    id: 'loc-toronto', country: 'Canada', city: 'Toronto', isoCode: 'CA',
+    active: true, sortOrder: 3, program: 'school', mapPosition: { x: 28, y: 26 },
+    storyLabel: 'Parent voice',
+    quote: 'The level of professionalism is outstanding. Scheduling is seamless, communication is prompt, and every mentor has been patient and knowledgeable.',
+    attribution: 'Michael Carter, Parent',
   },
   {
-    id: 'loc-singapore',
-    country: 'Singapore',
-    city: 'Singapore',
-    isoCode: 'SG',
-    active: true,
-    sortOrder: 4,
-    mapPosition: { x: 79, y: 49 },
+    id: 'loc-singapore', country: 'Singapore', city: 'Singapore', isoCode: 'SG',
+    active: true, sortOrder: 4, program: 'school', mapPosition: { x: 79, y: 49 },
+    storyLabel: 'Parent voice',
+    quote: 'The communication was excellent, lessons were extremely well planned, and our son became much more confident.',
+    attribution: 'David Thompson, Parent',
   },
   {
-    id: 'loc-zurich',
-    country: 'Switzerland',
-    city: 'Zurich',
-    isoCode: 'CH',
-    active: true,
-    sortOrder: 5,
-    mapPosition: { x: 52, y: 24 },
+    id: 'loc-melbourne', country: 'Australia', city: 'Melbourne', isoCode: 'AU',
+    active: true, sortOrder: 5, program: 'school', mapPosition: { x: 90, y: 71 },
+    storyLabel: 'Parent voice',
+    quote: 'The sessions are engaging, structured, and surprisingly enjoyable. His confidence has improved just as much as his grades.',
+    attribution: 'Sarah Williams, Parent',
   },
   {
-    id: 'loc-hongkong',
-    country: 'Hong Kong',
-    city: 'Hong Kong',
-    isoCode: 'HK',
-    active: true,
-    sortOrder: 6,
-    mapPosition: { x: 82, y: 38 },
+    id: 'loc-new-delhi', country: 'India', city: 'New Delhi', isoCode: 'IN',
+    active: true, sortOrder: 6, program: 'school', mapPosition: { x: 70, y: 39 },
+    storyLabel: 'Parent voice',
+    quote: 'Today she approaches exams much more calmly because she understands concepts instead of memorising them.',
+    attribution: 'Anjali Kapoor, Parent',
   },
   {
-    id: 'loc-melbourne',
-    country: 'Australia',
-    city: 'Melbourne',
-    isoCode: 'AU',
-    active: true,
-    sortOrder: 7,
-    mapPosition: { x: 90, y: 71 },
+    id: 'loc-doha', country: 'Qatar', city: 'Doha', isoCode: 'QA',
+    active: true, sortOrder: 7, program: 'school', mapPosition: { x: 64, y: 36 },
+    storyLabel: 'Parent voice',
+    quote: 'Every lesson feels tailored to my son’s strengths and weaknesses. He now studies independently.',
+    attribution: 'Omar Hassan, Parent',
   },
   {
-    id: 'loc-amsterdam',
-    country: 'Netherlands',
-    city: 'Amsterdam',
-    isoCode: 'NL',
-    active: true,
-    sortOrder: 8,
-    mapPosition: { x: 51, y: 21 },
+    id: 'loc-california', country: 'United States', city: 'California', isoCode: 'US',
+    active: true, sortOrder: 8, program: 'school', mapPosition: { x: 16, y: 34 },
+    storyLabel: 'Parent voice',
+    quote: 'She now manages her schoolwork independently and has developed much stronger study habits.',
+    attribution: 'Jennifer Collins, Parent',
   },
 ];

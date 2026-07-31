@@ -2,18 +2,19 @@ import { describe, expect, it } from 'vitest';
 import { locationRepository, getActiveLocations } from './locationRepository';
 
 describe('locationRepository', () => {
-  it('seeds the eight initial cities from the spec', () => {
+  it('seeds eight locations with matching testimonial stories', () => {
     const seeded = locationRepository.getAll();
     expect(seeded.map((location) => location.city)).toEqual([
       'London',
       'Dubai',
       'Toronto',
       'Singapore',
-      'Zurich',
-      'Hong Kong',
       'Melbourne',
-      'Amsterdam',
+      'New Delhi',
+      'Doha',
+      'California',
     ]);
+    expect(seeded.every((location) => location.quote && location.attribution)).toBe(true);
   });
 
   it('getActiveLocations excludes inactive locations', () => {
