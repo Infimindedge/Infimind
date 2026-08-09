@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 
 const signInSchema = z.object({
   username: z.string().min(1, 'Username or email is required'),
@@ -14,6 +15,12 @@ const signInSchema = z.object({
 type SignInValues = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
+  usePageMetadata({
+    title: 'Sign In | Infimind',
+    description: 'Sign in to access your administrative dashboard.',
+    noindex: true,
+  });
+
   const [authError, setAuthError] = useState<string | null>(null);
   const {
     register,

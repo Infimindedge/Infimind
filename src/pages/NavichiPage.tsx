@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react';
+import { useId, useState } from 'react';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import flags from 'react-phone-number-input/flags';
 import type { Country } from 'react-phone-number-input';
@@ -68,46 +68,12 @@ function CountryChip({ location }: { location: LocationItem }) {
   );
 }
 
-function usePageMetadata() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = 'Navichi by Infimind | The Personalised SAT Navigator';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 
-    const metaEntries = [
-      {
-        name: 'description',
-        content:
-          "Navichi is Infimind's one-to-one personalised SAT preparation system, combining diagnostic analysis, learning science, adaptive practice, continuous mentoring and progress intelligence.",
-      },
-      { property: 'og:title', content: 'Navichi by Infimind | The Personalised SAT Navigator' },
-      {
-        property: 'og:description',
-        content:
-          "Infimind's one-to-one personalised SAT preparation system for diagnostic analysis, adaptive practice and progress intelligence.",
-      },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Navichi by Infimind | The Personalised SAT Navigator' },
-    ];
+const PAGE_TITLE = 'Navichi by Infimind | The Personalised SAT Navigator';
+const PAGE_DESCRIPTION =
+  "Navichi is Infimind's one-to-one personalised SAT preparation system, combining diagnostic analysis, learning science, adaptive practice, continuous mentoring and progress intelligence.";
 
-    const created = metaEntries.map((entry) => {
-      const element = document.createElement('meta');
-      Object.entries(entry).forEach(([key, value]) => element.setAttribute(key, value));
-      document.head.appendChild(element);
-      return element;
-    });
-
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = `${window.location.origin}/navichi`;
-    document.head.appendChild(canonical);
-
-    return () => {
-      document.title = previousTitle;
-      created.forEach((element) => element.remove());
-      canonical.remove();
-    };
-  }, []);
-}
 
 function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
   const reduceMotion = useReducedMotion();
@@ -724,7 +690,11 @@ function FinalCtaSection() {
 }
 
 function NavichiPageContent() {
-  usePageMetadata();
+  usePageMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    canonicalUrl: `${window.location.origin}/navichi`,
+  });
 
   return (
     <div className="navichi-page flex min-h-screen flex-col overflow-x-hidden">

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
@@ -11,6 +10,7 @@ import { ResearchDriven } from '@/components/philosophy/ResearchDriven';
 import { PhilosophyPromise } from '@/components/philosophy/PhilosophyPromise';
 import { PhilosophyManifesto } from '@/components/philosophy/PhilosophyManifesto';
 import { PhilosophyFinalCta } from '@/components/philosophy/PhilosophyFinalCta';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 
 const PAGE_TITLE = 'Our Philosophy | Infimind';
 const PAGE_DESCRIPTION =
@@ -25,44 +25,14 @@ const structuredData = {
   ],
 };
 
-function usePageMetadata() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = PAGE_TITLE;
-
-    const metaEntries = [
-      { name: 'description', content: PAGE_DESCRIPTION },
-      { property: 'og:title', content: PAGE_TITLE },
-      { property: 'og:description', content: PAGE_DESCRIPTION },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: '/assets/philosophy/philosophy-hero.jpg' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: PAGE_TITLE },
-      { name: 'twitter:description', content: PAGE_DESCRIPTION },
-    ];
-
-    const created = metaEntries.map((entry) => {
-      const element = document.createElement('meta');
-      Object.entries(entry).forEach(([key, value]) => element.setAttribute(key, value));
-      document.head.appendChild(element);
-      return element;
-    });
-
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = `${window.location.origin}/philosophy`;
-    document.head.appendChild(canonical);
-
-    return () => {
-      document.title = previousTitle;
-      created.forEach((element) => element.remove());
-      canonical.remove();
-    };
-  }, []);
-}
-
 export default function Philosophy() {
-  usePageMetadata();
+  usePageMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    canonicalUrl: `${window.location.origin}/philosophy`,
+    image: '/assets/philosophy/philosophy-hero.jpg',
+  });
+
 
   return (
     <>

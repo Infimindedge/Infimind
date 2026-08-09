@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { ConsultationModalProvider } from '@/context/ConsultationModalContext';
@@ -29,23 +30,13 @@ const TITLE = 'Personalised School Programme for Grades 1–12 | Infimind';
 const DESCRIPTION = "Explore Infimind's personalised School Programme for Grades 1–12, combining exceptional subject educators, international-curriculum support, learning science, continuous mentoring and individual academic pathways.";
 const stageIds = new Set(schoolProgramme.programmeBands.map((band) => band.id));
 
-function useMetadata() {
-  useEffect(() => {
-    const previousTitle = document.title; document.title = TITLE;
-    const entries = [
-      { name: 'description', content: DESCRIPTION }, { property: 'og:title', content: TITLE },
-      { property: 'og:description', content: DESCRIPTION }, { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: '/assets/school-programme/school-programme-social.jpg' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-    ];
-    const metas = entries.map((entry) => { const element = document.createElement('meta'); Object.entries(entry).forEach(([key, value]) => element.setAttribute(key, value)); document.head.appendChild(element); return element; });
-    const canonical = document.createElement('link'); canonical.rel = 'canonical'; canonical.href = `${window.location.origin}/programs/school`; document.head.appendChild(canonical);
-    return () => { document.title = previousTitle; metas.forEach((meta) => meta.remove()); canonical.remove(); };
-  }, []);
-}
-
 function SchoolProgrammeContent() {
-  useMetadata();
+  usePageMetadata({
+    title: TITLE,
+    description: DESCRIPTION,
+    canonicalUrl: `${window.location.origin}/programs/school`,
+    image: '/assets/school-programme/school-programme-social.jpg',
+  });
   const [params, setParams] = useSearchParams();
   const requestedStage = params.get('stage') as ProgrammeStageId | null;
   const stage = requestedStage && stageIds.has(requestedStage) ? requestedStage : 'discover';

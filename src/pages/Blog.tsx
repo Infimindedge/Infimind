@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -18,61 +18,27 @@ import { useBlogSettings } from '@/hooks/useBlogSettings';
 import { useDebouncedValue } from '@/hooks/useDebouncedValue';
 import type { BlogArticle } from '@/types/blog';
 
+import { usePageMetadata } from '@/hooks/usePageMetadata';
+
 const PAGE_TITLE = 'Infimind Blog | Learning Science, SAT and Student Development';
 const PAGE_DESCRIPTION =
   'Explore Infimind insights on learning science, study skills, student wellbeing, SAT preparation, university admissions and parent guidance.';
 
-function usePageMetadata() {
-  useEffect(() => {
-    const previousTitle = document.title;
-    document.title = PAGE_TITLE;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  breadcrumb: {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: '/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: '/blog' },
+    ],
+  },
+};
 
-    const metaEntries = [
-      { name: 'description', content: PAGE_DESCRIPTION },
-      { property: 'og:title', content: PAGE_TITLE },
-      { property: 'og:description', content: PAGE_DESCRIPTION },
-      { property: 'og:type', content: 'website' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-    ];
 
-    const created = metaEntries.map((entry) => {
-      const element = document.createElement('meta');
-      Object.entries(entry).forEach(([key, value]) => element.setAttribute(key, value));
-      document.head.appendChild(element);
-      return element;
-    });
-
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = `${window.location.origin}/blog`;
-    document.head.appendChild(canonical);
-
-    const structuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      name: PAGE_TITLE,
-      description: PAGE_DESCRIPTION,
-      breadcrumb: {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: '/' },
-          { '@type': 'ListItem', position: 2, name: 'Blog', item: '/blog' },
-        ],
-      },
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.title = previousTitle;
-      created.forEach((element) => element.remove());
-      canonical.remove();
-      script.remove();
-    };
-  }, []);
-}
 
 function blockPlainText(article: BlogArticle): string {
   return article.body
@@ -96,7 +62,12 @@ function blockPlainText(article: BlogArticle): string {
 }
 
 export default function Blog() {
-  usePageMetadata();
+  usePageMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    canonicalUrl: `${window.location.origin}/blog`,
+    structuredData,
+  });
 
   const { items: allArticles } = useCollection(blogArticleRepository, BLOG_ARTICLES_STORAGE_KEY);
   useCollection(blogCategoryRepository, BLOG_CATEGORIES_STORAGE_KEY);

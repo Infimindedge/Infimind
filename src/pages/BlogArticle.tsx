@@ -1,5 +1,6 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
@@ -18,34 +19,22 @@ import { useBlogSettings } from '@/hooks/useBlogSettings';
 import { buildToc } from '@/lib/blogToc';
 import type { BlogArticle as BlogArticleModel } from '@/types/blog';
 
-function usePageMetadata(article: BlogArticleModel | undefined) {
-  useEffect(() => {
-    if (!article) return;
-    const previousTitle = document.title;
+
+
+export default function BlogArticle() {
+  const { slug } = useParams<{ slug: string }>();
+  const { items: articles } = useCollection(blogArticleRepository, BLOG_ARTICLES_STORAGE_KEY);
+  const { items: categories } = useCollection(blogCategoryRepository, BLOG_CATEGORIES_STORAGE_KEY);
+  const { items: authors } = useCollection(blogAuthorRepository, BLOG_AUTHORS_STORAGE_KEY);
+  const settings = useBlogSettings();
+
+  const article = articles.find((item) => item.slug === slug && item.status === 'published');
+
+  const metadataOptions = useMemo(() => {
+    if (!article) return undefined;
     const title = `${article.seoTitle || article.title} | Infimind Blog`;
     const description = article.seoDescription || article.excerpt;
-    document.title = title;
-
-    const metaEntries = [
-      { name: 'description', content: description },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:type', content: 'article' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-    ];
-
-    const created = metaEntries.map((entry) => {
-      const element = document.createElement('meta');
-      Object.entries(entry).forEach(([key, value]) => element.setAttribute(key, value));
-      document.head.appendChild(element);
-      return element;
-    });
-
-    const canonical = document.createElement('link');
-    canonical.rel = 'canonical';
-    canonical.href = article.canonicalUrl || `${window.location.origin}/blog/${article.slug}`;
-    document.head.appendChild(canonical);
-
+    const canonicalUrl = article.canonicalUrl || `${window.location.origin}/blog/${article.slug}`;
     const structuredData = {
       '@context': 'https://schema.org',
       '@type': 'Article',
@@ -62,30 +51,17 @@ function usePageMetadata(article: BlogArticleModel | undefined) {
         ],
       },
     };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(structuredData);
-    document.head.appendChild(script);
-
-    return () => {
-      document.title = previousTitle;
-      created.forEach((element) => element.remove());
-      canonical.remove();
-      script.remove();
+    return {
+      title,
+      description,
+      canonicalUrl,
+      type: 'article' as const,
+      image: article.coverImageUrl,
+      structuredData,
     };
   }, [article]);
-}
 
-export default function BlogArticle() {
-  const { slug } = useParams<{ slug: string }>();
-  const { items: articles } = useCollection(blogArticleRepository, BLOG_ARTICLES_STORAGE_KEY);
-  const { items: categories } = useCollection(blogCategoryRepository, BLOG_CATEGORIES_STORAGE_KEY);
-  const { items: authors } = useCollection(blogAuthorRepository, BLOG_AUTHORS_STORAGE_KEY);
-  const settings = useBlogSettings();
-
-  const article = articles.find((item) => item.slug === slug && item.status === 'published');
-
-  usePageMetadata(article);
+  usePageMetadata(metadataOptions);
 
   const toc = useMemo(() => (article ? buildToc(article.body) : []), [article]);
 

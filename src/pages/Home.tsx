@@ -10,8 +10,28 @@ import { LearningJourney } from '@/components/home/LearningJourney';
 import { FinalCta } from '@/components/home/FinalCta';
 import { ConsultationModalProvider } from '@/context/ConsultationModalContext';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { usePageMetadata } from '@/hooks/usePageMetadata';
+
+const PAGE_TITLE = 'Infimind | Private Learning Programs for Ambitious Students';
+const PAGE_DESCRIPTION =
+  'Infimind partners with ambitious families through personalised school and SAT learning programs, mentorship and structured student support.';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Infimind',
+  url: 'https://infimind.co.in/',
+  logo: '/assets/brand/infimind-logo.jpg',
+  description: PAGE_DESCRIPTION,
+};
 
 export default function Home() {
+  usePageMetadata({
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+    structuredData,
+  });
+
   return (
     <ConsultationModalProvider>
       <div className="flex min-h-screen flex-col overflow-x-hidden">
